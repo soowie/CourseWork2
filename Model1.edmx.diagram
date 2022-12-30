@@ -8,8 +8,8 @@
         <EntityTypeShape EntityType="CourseWorkAppointmentsModel.ACCOUNT" Width="1.5" PointX="0.75" PointY="4.5" />
         <EntityTypeShape EntityType="CourseWorkAppointmentsModel.APPOINTMENT" Width="1.5" PointX="5.25" PointY="6.5" />
         <EntityTypeShape EntityType="CourseWorkAppointmentsModel.DEPARTMENT" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="CourseWorkAppointmentsModel.DOCTOR" Width="1.5" PointX="3" PointY="3.875" />
-        <EntityTypeShape EntityType="CourseWorkAppointmentsModel.PATIENT" Width="1.5" PointX="3" PointY="8.875" />
+        <EntityTypeShape EntityType="CourseWorkAppointmentsModel.DOCTOR" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="CourseWorkAppointmentsModel.PATIENT" Width="1.5" PointX="3" PointY="9" />
         <AssociationConnector Association="CourseWorkAppointmentsModel.FK__DOCTOR__account___403A8C7D" />
         <AssociationConnector Association="CourseWorkAppointmentsModel.FK__PATIENT__account__440B1D61" />
         <AssociationConnector Association="CourseWorkAppointmentsModel.FK__APPOINTME__docto__47DBAE45" />

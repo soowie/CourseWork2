@@ -51,6 +51,7 @@
           <Property Name="rating" Type="float" />
           <Property Name="department_id" Type="int" Nullable="false" />
           <Property Name="account_id" Type="int" Nullable="false" />
+          <Property Name="specialization" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="PATIENT">
           <Key>
@@ -233,6 +234,7 @@
           <Property Name="rating" Type="Double" />
           <Property Name="department_id" Type="Int32" Nullable="false" />
           <Property Name="account_id" Type="Int32" Nullable="false" />
+          <Property Name="specialization" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ACCOUNT" Relationship="CourseWorkAppointmentsModel.FK__DOCTOR__account___403A8C7D" FromRole="DOCTOR" ToRole="ACCOUNT" />
           <NavigationProperty Name="APPOINTMENT" Relationship="CourseWorkAppointmentsModel.FK__APPOINTME__docto__47DBAE45" FromRole="DOCTOR" ToRole="APPOINTMENT" />
           <NavigationProperty Name="DEPARTMENT" Relationship="CourseWorkAppointmentsModel.FK__DOCTOR__departme__3F466844" FromRole="DOCTOR" ToRole="DEPARTMENT" />
@@ -311,7 +313,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -354,6 +356,7 @@
           <EntitySetMapping Name="DOCTOR">
             <EntityTypeMapping TypeName="CourseWorkAppointmentsModel.DOCTOR">
               <MappingFragment StoreEntitySet="DOCTOR">
+                <ScalarProperty Name="specialization" ColumnName="specialization" />
                 <ScalarProperty Name="account_id" ColumnName="account_id" />
                 <ScalarProperty Name="department_id" ColumnName="department_id" />
                 <ScalarProperty Name="rating" ColumnName="rating" />
