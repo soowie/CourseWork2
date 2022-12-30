@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище CourseWorkAppointmentsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="account_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="is_deleted" Type="bit" Nullable="false" />
+          <Property Name="creation_date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APPOINTMENT">
+          <Key>
+            <PropertyRef Name="appointment_id" />
+          </Key>
+          <Property Name="appointment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="start_time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="end_time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="patient_rating" Type="float" Nullable="false" />
+          <Property Name="doctor_id" Type="int" Nullable="false" />
+          <Property Name="patient_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DEPARTMENT">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="floor" Type="int" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="90" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCTOR">
+          <Key>
+            <PropertyRef Name="doctor_id" />
+          </Key>
+          <Property Name="doctor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="information" Type="nvarchar" MaxLength="300" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="phone_number" Type="nvarchar" MaxLength="15" />
+          <Property Name="experience" Type="int" Nullable="false" />
+          <Property Name="patients_count" Type="int" Nullable="false" />
+          <Property Name="cabinet_number" Type="int" Nullable="false" />
+          <Property Name="rating" Type="float" />
+          <Property Name="department_id" Type="int" Nullable="false" />
+          <Property Name="account_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PATIENT">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="date_of_birth" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="phone_number" Type="nvarchar" MaxLength="15" />
+          <Property Name="appointments_overtime" Type="int" Nullable="false" />
+          <Property Name="account_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__APPOINTME__docto__47DBAE45">
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+          <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTOR">
+              <PropertyRef Name="doctor_id" />
+            </Principal>
+            <Dependent Role="APPOINTMENT">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__APPOINTME__patie__48CFD27E">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="APPOINTMENT">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DOCTOR__account___403A8C7D">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DOCTOR__departme__3F466844">
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="1" />
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENT">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PATIENT__account__440B1D61">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="PATIENT">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище CourseWorkAppointmentsModelContainer">
+          <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APPOINTMENT" EntityType="Self.APPOINTMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEPARTMENT" EntityType="Self.DEPARTMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PATIENT" EntityType="Self.PATIENT" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__APPOINTME__docto__47DBAE45" Association="Self.FK__APPOINTME__docto__47DBAE45">
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+            <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__APPOINTME__patie__48CFD27E" Association="Self.FK__APPOINTME__patie__48CFD27E">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DOCTOR__account___403A8C7D" Association="Self.FK__DOCTOR__account___403A8C7D">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DOCTOR__departme__3F466844" Association="Self.FK__DOCTOR__departme__3F466844">
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PATIENT__account__440B1D61" Association="Self.FK__PATIENT__account__440B1D61">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="PATIENT" EntitySet="PATIENT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CourseWorkAppointmentsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CourseWorkAppointmentsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCOUNT" EntityType="CourseWorkAppointmentsModel.ACCOUNT" />
+          <EntitySet Name="APPOINTMENT" EntityType="CourseWorkAppointmentsModel.APPOINTMENT" />
+          <EntitySet Name="DEPARTMENT" EntityType="CourseWorkAppointmentsModel.DEPARTMENT" />
+          <EntitySet Name="DOCTOR" EntityType="CourseWorkAppointmentsModel.DOCTOR" />
+          <EntitySet Name="PATIENT" EntityType="CourseWorkAppointmentsModel.PATIENT" />
+          <AssociationSet Name="FK__DOCTOR__account___403A8C7D" Association="CourseWorkAppointmentsModel.FK__DOCTOR__account___403A8C7D">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PATIENT__account__440B1D61" Association="CourseWorkAppointmentsModel.FK__PATIENT__account__440B1D61">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="PATIENT" EntitySet="PATIENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__APPOINTME__docto__47DBAE45" Association="CourseWorkAppointmentsModel.FK__APPOINTME__docto__47DBAE45">
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+            <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__APPOINTME__patie__48CFD27E" Association="CourseWorkAppointmentsModel.FK__APPOINTME__patie__48CFD27E">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DOCTOR__departme__3F466844" Association="CourseWorkAppointmentsModel.FK__DOCTOR__departme__3F466844">
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="is_deleted" Type="Boolean" Nullable="false" />
+          <Property Name="creation_date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DOCTOR" Relationship="CourseWorkAppointmentsModel.FK__DOCTOR__account___403A8C7D" FromRole="ACCOUNT" ToRole="DOCTOR" />
+          <NavigationProperty Name="PATIENT" Relationship="CourseWorkAppointmentsModel.FK__PATIENT__account__440B1D61" FromRole="ACCOUNT" ToRole="PATIENT" />
+        </EntityType>
+        <EntityType Name="APPOINTMENT">
+          <Key>
+            <PropertyRef Name="appointment_id" />
+          </Key>
+          <Property Name="appointment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="start_time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="end_time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="patient_rating" Type="Double" Nullable="false" />
+          <Property Name="doctor_id" Type="Int32" Nullable="false" />
+          <Property Name="patient_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DOCTOR" Relationship="CourseWorkAppointmentsModel.FK__APPOINTME__docto__47DBAE45" FromRole="APPOINTMENT" ToRole="DOCTOR" />
+          <NavigationProperty Name="PATIENT" Relationship="CourseWorkAppointmentsModel.FK__APPOINTME__patie__48CFD27E" FromRole="APPOINTMENT" ToRole="PATIENT" />
+        </EntityType>
+        <EntityType Name="DEPARTMENT">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="floor" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DOCTOR" Relationship="CourseWorkAppointmentsModel.FK__DOCTOR__departme__3F466844" FromRole="DEPARTMENT" ToRole="DOCTOR" />
+        </EntityType>
+        <EntityType Name="DOCTOR">
+          <Key>
+            <PropertyRef Name="doctor_id" />
+          </Key>
+          <Property Name="doctor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="information" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="experience" Type="Int32" Nullable="false" />
+          <Property Name="patients_count" Type="Int32" Nullable="false" />
+          <Property Name="cabinet_number" Type="Int32" Nullable="false" />
+          <Property Name="rating" Type="Double" />
+          <Property Name="department_id" Type="Int32" Nullable="false" />
+          <Property Name="account_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACCOUNT" Relationship="CourseWorkAppointmentsModel.FK__DOCTOR__account___403A8C7D" FromRole="DOCTOR" ToRole="ACCOUNT" />
+          <NavigationProperty Name="APPOINTMENT" Relationship="CourseWorkAppointmentsModel.FK__APPOINTME__docto__47DBAE45" FromRole="DOCTOR" ToRole="APPOINTMENT" />
+          <NavigationProperty Name="DEPARTMENT" Relationship="CourseWorkAppointmentsModel.FK__DOCTOR__departme__3F466844" FromRole="DOCTOR" ToRole="DEPARTMENT" />
+        </EntityType>
+        <EntityType Name="PATIENT">
+          <Key>
+            <PropertyRef Name="patient_id" />
+          </Key>
+          <Property Name="patient_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="date_of_birth" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="appointments_overtime" Type="Int32" Nullable="false" />
+          <Property Name="account_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACCOUNT" Relationship="CourseWorkAppointmentsModel.FK__PATIENT__account__440B1D61" FromRole="PATIENT" ToRole="ACCOUNT" />
+          <NavigationProperty Name="APPOINTMENT" Relationship="CourseWorkAppointmentsModel.FK__APPOINTME__patie__48CFD27E" FromRole="PATIENT" ToRole="APPOINTMENT" />
+        </EntityType>
+        <Association Name="FK__DOCTOR__account___403A8C7D">
+          <End Type="CourseWorkAppointmentsModel.ACCOUNT" Role="ACCOUNT" Multiplicity="1" />
+          <End Type="CourseWorkAppointmentsModel.DOCTOR" Role="DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PATIENT__account__440B1D61">
+          <End Type="CourseWorkAppointmentsModel.ACCOUNT" Role="ACCOUNT" Multiplicity="1" />
+          <End Type="CourseWorkAppointmentsModel.PATIENT" Role="PATIENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="PATIENT">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__APPOINTME__docto__47DBAE45">
+          <End Type="CourseWorkAppointmentsModel.DOCTOR" Role="DOCTOR" Multiplicity="1" />
+          <End Type="CourseWorkAppointmentsModel.APPOINTMENT" Role="APPOINTMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTOR">
+              <PropertyRef Name="doctor_id" />
+            </Principal>
+            <Dependent Role="APPOINTMENT">
+              <PropertyRef Name="doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__APPOINTME__patie__48CFD27E">
+          <End Type="CourseWorkAppointmentsModel.PATIENT" Role="PATIENT" Multiplicity="1" />
+          <End Type="CourseWorkAppointmentsModel.APPOINTMENT" Role="APPOINTMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="patient_id" />
+            </Principal>
+            <Dependent Role="APPOINTMENT">
+              <PropertyRef Name="patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DOCTOR__departme__3F466844">
+          <End Type="CourseWorkAppointmentsModel.DEPARTMENT" Role="DEPARTMENT" Multiplicity="1" />
+          <End Type="CourseWorkAppointmentsModel.DOCTOR" Role="DOCTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENT">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CourseWorkAppointmentsModelContainer" CdmEntityContainer="CourseWorkAppointmentsEntities">
+          <EntitySetMapping Name="ACCOUNT">
+            <EntityTypeMapping TypeName="CourseWorkAppointmentsModel.ACCOUNT">
+              <MappingFragment StoreEntitySet="ACCOUNT">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="creation_date" ColumnName="creation_date" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APPOINTMENT">
+            <EntityTypeMapping TypeName="CourseWorkAppointmentsModel.APPOINTMENT">
+              <MappingFragment StoreEntitySet="APPOINTMENT">
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+                <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+                <ScalarProperty Name="patient_rating" ColumnName="patient_rating" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="appointment_id" ColumnName="appointment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPARTMENT">
+            <EntityTypeMapping TypeName="CourseWorkAppointmentsModel.DEPARTMENT">
+              <MappingFragment StoreEntitySet="DEPARTMENT">
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="floor" ColumnName="floor" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCTOR">
+            <EntityTypeMapping TypeName="CourseWorkAppointmentsModel.DOCTOR">
+              <MappingFragment StoreEntitySet="DOCTOR">
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="cabinet_number" ColumnName="cabinet_number" />
+                <ScalarProperty Name="patients_count" ColumnName="patients_count" />
+                <ScalarProperty Name="experience" ColumnName="experience" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="information" ColumnName="information" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PATIENT">
+            <EntityTypeMapping TypeName="CourseWorkAppointmentsModel.PATIENT">
+              <MappingFragment StoreEntitySet="PATIENT">
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="appointments_overtime" ColumnName="appointments_overtime" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
