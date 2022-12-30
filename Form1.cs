@@ -58,6 +58,7 @@ namespace AppointmentsService
         private void Form1_Load(object sender, EventArgs e)
         {
             ClearTextBoxes();
+            PopulateDoctorDGV();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -92,7 +93,16 @@ namespace AppointmentsService
                 SaveDBChanges(db);
             }
             ClearTextBoxes();
+            PopulateDoctorDGV();
             MessageBox.Show("Added successfully!");
+        }
+
+        void PopulateDoctorDGV()
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                dgvCustomer.DataSource = db.DOCTOR.ToList<DOCTOR>();
+            }
         }
     }
 }
