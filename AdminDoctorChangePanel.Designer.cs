@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.doctor_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +66,8 @@
             this.txtDoctorSpecialization = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtDoctorExperience = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnGoDepartment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +75,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(32, 35);
+            this.label1.Location = new System.Drawing.Point(32, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 20);
             this.label1.TabIndex = 0;
@@ -101,14 +103,14 @@
             this.rating,
             this.DepartmentID,
             this.account_id});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PaleGreen;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleGreen;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCustomer.Location = new System.Drawing.Point(404, 12);
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.ReadOnly = true;
@@ -247,7 +249,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(32, 63);
+            this.label2.Location = new System.Drawing.Point(32, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 20);
             this.label2.TabIndex = 0;
@@ -257,7 +259,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(32, 93);
+            this.label3.Location = new System.Drawing.Point(32, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(169, 20);
             this.label3.TabIndex = 0;
@@ -267,7 +269,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(32, 121);
+            this.label4.Location = new System.Drawing.Point(32, 162);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(153, 20);
             this.label4.TabIndex = 0;
@@ -309,7 +311,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(32, 150);
+            this.label5.Location = new System.Drawing.Point(32, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 20);
             this.label5.TabIndex = 0;
@@ -319,7 +321,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(32, 281);
+            this.label6.Location = new System.Drawing.Point(32, 324);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 20);
             this.label6.TabIndex = 0;
@@ -329,7 +331,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(32, 310);
+            this.label7.Location = new System.Drawing.Point(32, 353);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 20);
             this.label7.TabIndex = 0;
@@ -337,56 +339,57 @@
             // 
             // txtDoctorFio
             // 
-            this.txtDoctorFio.Location = new System.Drawing.Point(213, 35);
+            this.txtDoctorFio.Location = new System.Drawing.Point(213, 58);
             this.txtDoctorFio.Name = "txtDoctorFio";
             this.txtDoctorFio.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorFio.TabIndex = 4;
             // 
             // txtDoctorInfo
             // 
-            this.txtDoctorInfo.Location = new System.Drawing.Point(213, 63);
+            this.txtDoctorInfo.Location = new System.Drawing.Point(213, 86);
+            this.txtDoctorInfo.Multiline = true;
             this.txtDoctorInfo.Name = "txtDoctorInfo";
-            this.txtDoctorInfo.Size = new System.Drawing.Size(172, 22);
+            this.txtDoctorInfo.Size = new System.Drawing.Size(172, 42);
             this.txtDoctorInfo.TabIndex = 4;
             // 
             // txtDoctorEmail
             // 
-            this.txtDoctorEmail.Location = new System.Drawing.Point(213, 91);
+            this.txtDoctorEmail.Location = new System.Drawing.Point(213, 134);
             this.txtDoctorEmail.Name = "txtDoctorEmail";
             this.txtDoctorEmail.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorEmail.TabIndex = 4;
             // 
             // txtDoctorPhone
             // 
-            this.txtDoctorPhone.Location = new System.Drawing.Point(213, 119);
+            this.txtDoctorPhone.Location = new System.Drawing.Point(213, 162);
             this.txtDoctorPhone.Name = "txtDoctorPhone";
             this.txtDoctorPhone.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorPhone.TabIndex = 4;
             // 
             // txtDoctorCabinet
             // 
-            this.txtDoctorCabinet.Location = new System.Drawing.Point(213, 150);
+            this.txtDoctorCabinet.Location = new System.Drawing.Point(213, 190);
             this.txtDoctorCabinet.Name = "txtDoctorCabinet";
             this.txtDoctorCabinet.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorCabinet.TabIndex = 4;
             // 
             // txtDoctorLogin
             // 
-            this.txtDoctorLogin.Location = new System.Drawing.Point(213, 281);
+            this.txtDoctorLogin.Location = new System.Drawing.Point(213, 324);
             this.txtDoctorLogin.Name = "txtDoctorLogin";
             this.txtDoctorLogin.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorLogin.TabIndex = 4;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(213, 308);
+            this.textBox6.Location = new System.Drawing.Point(213, 351);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(172, 22);
             this.textBox6.TabIndex = 4;
             // 
             // txtDoctorPass
             // 
-            this.txtDoctorPass.Location = new System.Drawing.Point(213, 308);
+            this.txtDoctorPass.Location = new System.Drawing.Point(213, 351);
             this.txtDoctorPass.Name = "txtDoctorPass";
             this.txtDoctorPass.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorPass.TabIndex = 4;
@@ -395,7 +398,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(32, 178);
+            this.label8.Location = new System.Drawing.Point(32, 218);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(161, 20);
             this.label8.TabIndex = 0;
@@ -403,7 +406,7 @@
             // 
             // txtDoctorDepartment
             // 
-            this.txtDoctorDepartment.Location = new System.Drawing.Point(213, 178);
+            this.txtDoctorDepartment.Location = new System.Drawing.Point(213, 218);
             this.txtDoctorDepartment.Name = "txtDoctorDepartment";
             this.txtDoctorDepartment.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorDepartment.TabIndex = 4;
@@ -412,7 +415,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(32, 206);
+            this.label9.Location = new System.Drawing.Point(32, 246);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(118, 20);
             this.label9.TabIndex = 0;
@@ -420,7 +423,7 @@
             // 
             // txtDoctorSpecialization
             // 
-            this.txtDoctorSpecialization.Location = new System.Drawing.Point(213, 206);
+            this.txtDoctorSpecialization.Location = new System.Drawing.Point(213, 246);
             this.txtDoctorSpecialization.Name = "txtDoctorSpecialization";
             this.txtDoctorSpecialization.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorSpecialization.TabIndex = 4;
@@ -429,7 +432,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(32, 234);
+            this.label10.Location = new System.Drawing.Point(32, 274);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 20);
             this.label10.TabIndex = 0;
@@ -437,17 +440,46 @@
             // 
             // txtDoctorExperience
             // 
-            this.txtDoctorExperience.Location = new System.Drawing.Point(213, 234);
+            this.txtDoctorExperience.Location = new System.Drawing.Point(213, 274);
             this.txtDoctorExperience.Name = "txtDoctorExperience";
             this.txtDoctorExperience.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorExperience.TabIndex = 4;
             // 
-            // AdminDoctorChange
+            // button1
+            // 
+            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button1.BackColor = System.Drawing.Color.Cornsilk;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(22, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 35);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Вийти";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnGoDepartment
+            // 
+            this.btnGoDepartment.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnGoDepartment.BackColor = System.Drawing.Color.Cornsilk;
+            this.btnGoDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGoDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGoDepartment.Location = new System.Drawing.Point(156, 12);
+            this.btnGoDepartment.Name = "btnGoDepartment";
+            this.btnGoDepartment.Size = new System.Drawing.Size(229, 35);
+            this.btnGoDepartment.TabIndex = 5;
+            this.btnGoDepartment.Text = "Редагувати відділи";
+            this.btnGoDepartment.UseVisualStyleBackColor = false;
+            this.btnGoDepartment.Click += new System.EventHandler(this.btnGoDepartment_Click);
+            // 
+            // AdminDoctorChangePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(873, 465);
+            this.Controls.Add(this.btnGoDepartment);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtDoctorPass);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.txtDoctorLogin);
@@ -473,8 +505,9 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
-            this.Name = "AdminDoctorChange";
+            this.Name = "AdminDoctorChangePanel";
             this.Text = "Таблиця лікарів";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminDoctorChangePanel_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.ResumeLayout(false);
@@ -521,6 +554,8 @@
         private System.Windows.Forms.TextBox txtDoctorSpecialization;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtDoctorExperience;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGoDepartment;
     }
 }
 

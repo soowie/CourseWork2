@@ -16,7 +16,9 @@ namespace AppointmentsService
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminDoctorChangePanel());
+            var adminDoctorChangePanel = new AdminDoctorChangePanel();
+            adminDoctorChangePanel.Show();
+            Application.Run();  // Not application run without specific form
         }
     }
 }

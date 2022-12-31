@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using Application = System.Windows.Forms.Application;
 
 namespace AppointmentsService
 {
@@ -171,6 +172,25 @@ namespace AppointmentsService
                     MessageBox.Show("Видалення вдале!");
                 }
             }
+        }
+
+        private void btnGoDepartment_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<AdminDepartmentChangePanel>().Any())
+            {
+                Application.OpenForms.OfType<AdminDepartmentChangePanel>().First().BringToFront();
+            }
+            else
+            {
+                AdminDepartmentChangePanel f = new AdminDepartmentChangePanel();
+                f.Show();
+            }
+        }
+
+        private void AdminDoctorChangePanel_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 0)
+                Application.Exit();
         }
     }
 }
