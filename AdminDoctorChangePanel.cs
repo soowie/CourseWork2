@@ -192,5 +192,12 @@ namespace AppointmentsService
             if (Application.OpenForms.Count == 0)
                 Application.Exit();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AuthorizationForm af = new AuthorizationForm();
+            af.Show();
+            this.Close();
+        }
     }
 }
