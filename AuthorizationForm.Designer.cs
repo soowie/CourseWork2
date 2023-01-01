@@ -108,7 +108,7 @@
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLogin.Location = new System.Drawing.Point(175, 246);
+            this.btnLogin.Location = new System.Drawing.Point(152, 241);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 3;
@@ -118,12 +118,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(256, 246);
+            this.button1.Location = new System.Drawing.Point(233, 241);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 23);
+            this.button1.Size = new System.Drawing.Size(171, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Створити аккаунт?";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AuthorizationForm
             // 

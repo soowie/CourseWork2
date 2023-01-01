@@ -56,19 +56,21 @@
             this.txtDoctorInfo = new System.Windows.Forms.TextBox();
             this.txtDoctorEmail = new System.Windows.Forms.TextBox();
             this.txtDoctorPhone = new System.Windows.Forms.TextBox();
-            this.txtDoctorCabinet = new System.Windows.Forms.TextBox();
             this.txtDoctorLogin = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.txtDoctorPass = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtDoctorDepartment = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtDoctorSpecialization = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtDoctorExperience = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnGoDepartment = new System.Windows.Forms.Button();
+            this.сmbSpecialization = new System.Windows.Forms.ComboBox();
+            this.cmbDepartment = new System.Windows.Forms.ComboBox();
+            this.txtDoctorCabinet = new System.Windows.Forms.NumericUpDown();
+            this.txtDoctorExperience = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorCabinet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorExperience)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -366,13 +368,6 @@
             this.txtDoctorPhone.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorPhone.TabIndex = 4;
             // 
-            // txtDoctorCabinet
-            // 
-            this.txtDoctorCabinet.Location = new System.Drawing.Point(213, 190);
-            this.txtDoctorCabinet.Name = "txtDoctorCabinet";
-            this.txtDoctorCabinet.Size = new System.Drawing.Size(172, 22);
-            this.txtDoctorCabinet.TabIndex = 4;
-            // 
             // txtDoctorLogin
             // 
             this.txtDoctorLogin.Location = new System.Drawing.Point(213, 324);
@@ -400,16 +395,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.Location = new System.Drawing.Point(32, 218);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(161, 20);
+            this.label8.Size = new System.Drawing.Size(103, 20);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Номер відділення";
-            // 
-            // txtDoctorDepartment
-            // 
-            this.txtDoctorDepartment.Location = new System.Drawing.Point(213, 218);
-            this.txtDoctorDepartment.Name = "txtDoctorDepartment";
-            this.txtDoctorDepartment.Size = new System.Drawing.Size(172, 22);
-            this.txtDoctorDepartment.TabIndex = 4;
+            this.label8.Text = "Відділення";
             // 
             // label9
             // 
@@ -421,13 +409,6 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Спецільність";
             // 
-            // txtDoctorSpecialization
-            // 
-            this.txtDoctorSpecialization.Location = new System.Drawing.Point(213, 246);
-            this.txtDoctorSpecialization.Name = "txtDoctorSpecialization";
-            this.txtDoctorSpecialization.Size = new System.Drawing.Size(172, 22);
-            this.txtDoctorSpecialization.TabIndex = 4;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -437,13 +418,6 @@
             this.label10.Size = new System.Drawing.Size(67, 20);
             this.label10.TabIndex = 0;
             this.label10.Text = "Досвід";
-            // 
-            // txtDoctorExperience
-            // 
-            this.txtDoctorExperience.Location = new System.Drawing.Point(213, 274);
-            this.txtDoctorExperience.Name = "txtDoctorExperience";
-            this.txtDoctorExperience.Size = new System.Drawing.Size(172, 22);
-            this.txtDoctorExperience.TabIndex = 4;
             // 
             // button1
             // 
@@ -473,21 +447,123 @@
             this.btnGoDepartment.UseVisualStyleBackColor = false;
             this.btnGoDepartment.Click += new System.EventHandler(this.btnGoDepartment_Click);
             // 
+            // сmbSpecialization
+            // 
+            this.сmbSpecialization.FormattingEnabled = true;
+            this.сmbSpecialization.Items.AddRange(new object[] {
+            "Акушер - гінеколог",
+            "Алерголог - імунолог",
+            "Андролог",
+            "Анестезіолог - реаніматолог",
+            "Ароматерапевт",
+            "Бактеріолог",
+            "Венеролог",
+            "Вертебролог",
+            "Гастроентеролог",
+            "Гематолог",
+            "Геріатр (Геронтолог)",
+            "Гірудотерапевт",
+            "Гомеопат",
+            "Дерматолог",
+            "Дієтолог",
+            "Ембріолог",
+            "Ендокринолог",
+            "Ендоскопіст",
+            "Епідеміолог",
+            "Еферентолог",
+            "Інфекціоніст",
+            "Кардіолог",
+            "Кардіохірург",
+            "Кінезітерапевт",
+            "Комбустіолог",
+            "Косметолог",
+            "Лікар функціональної діагностики (Функціональний діагност)",
+            "Лікар швидкої допомоги",
+            "Мамолог (Онколог-мамолог)",
+            "Мануальний терапевт (Мануальщик/Остеопат)",
+            "Медична сестра (Медсестра)",
+            "Міколог",
+            "Нарколог",
+            "Невропатолог (Невролог)",
+            "Нейрохірург",
+            "Неонатолог",
+            "Нефролог",
+            "Нутриціолог",
+            "Онколог (Хірург-онколог)",
+            "Ортопед",
+            "Оториноларинголог (отоларинголог, ЛОР)",
+            "Офтальмолог (Окуліст)",
+            "Патологоанатом",
+            "Педіатр",
+            "Подолог",
+            "Провізор",
+            "Проктолог",
+            "Психіатр",
+            "Психотерапевт",
+            "Пульмонолог",
+            "Радіолог",
+            "Реабілітолог",
+            "Ревматолог",
+            "Рентгенолог",
+            "Рефлексотерапевт",
+            "Сексолог (Сексопатолог)",
+            "Сімейний лікар",
+            "Спортивний лікар",
+            "Стоматолог",
+            "Терапевт",
+            "Токсиколог",
+            "Травматолог",
+            "Трансплантолог",
+            "Уролог",
+            "Фармацевт",
+            "Фахівець з клітинних технологій",
+            "Фоніатр",
+            "Фтизіатр",
+            "Хірург"});
+            this.сmbSpecialization.Location = new System.Drawing.Point(213, 246);
+            this.сmbSpecialization.Name = "сmbSpecialization";
+            this.сmbSpecialization.Size = new System.Drawing.Size(172, 24);
+            this.сmbSpecialization.TabIndex = 6;
+            this.сmbSpecialization.Text = "Медпрацівник";
+            // 
+            // cmbDepartment
+            // 
+            this.cmbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepartment.FormattingEnabled = true;
+            this.cmbDepartment.Location = new System.Drawing.Point(213, 216);
+            this.cmbDepartment.Name = "cmbDepartment";
+            this.cmbDepartment.Size = new System.Drawing.Size(172, 24);
+            this.cmbDepartment.TabIndex = 7;
+            // 
+            // txtDoctorCabinet
+            // 
+            this.txtDoctorCabinet.Location = new System.Drawing.Point(213, 188);
+            this.txtDoctorCabinet.Name = "txtDoctorCabinet";
+            this.txtDoctorCabinet.Size = new System.Drawing.Size(172, 22);
+            this.txtDoctorCabinet.TabIndex = 8;
+            // 
+            // txtDoctorExperience
+            // 
+            this.txtDoctorExperience.Location = new System.Drawing.Point(213, 274);
+            this.txtDoctorExperience.Name = "txtDoctorExperience";
+            this.txtDoctorExperience.Size = new System.Drawing.Size(172, 22);
+            this.txtDoctorExperience.TabIndex = 8;
+            // 
             // AdminDoctorChangePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(873, 465);
+            this.Controls.Add(this.txtDoctorExperience);
+            this.Controls.Add(this.txtDoctorCabinet);
+            this.Controls.Add(this.cmbDepartment);
+            this.Controls.Add(this.сmbSpecialization);
             this.Controls.Add(this.btnGoDepartment);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtDoctorPass);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.txtDoctorLogin);
-            this.Controls.Add(this.txtDoctorExperience);
-            this.Controls.Add(this.txtDoctorSpecialization);
-            this.Controls.Add(this.txtDoctorDepartment);
-            this.Controls.Add(this.txtDoctorCabinet);
             this.Controls.Add(this.txtDoctorPhone);
             this.Controls.Add(this.txtDoctorEmail);
             this.Controls.Add(this.txtDoctorInfo);
@@ -511,6 +587,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminDoctorChangePanel_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorCabinet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorExperience)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -533,12 +611,10 @@
         private System.Windows.Forms.TextBox txtDoctorInfo;
         private System.Windows.Forms.TextBox txtDoctorEmail;
         private System.Windows.Forms.TextBox txtDoctorPhone;
-        private System.Windows.Forms.TextBox txtDoctorCabinet;
         private System.Windows.Forms.TextBox txtDoctorLogin;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox txtDoctorPass;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtDoctorDepartment;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctor_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DoctorName;
         private System.Windows.Forms.DataGridViewTextBoxColumn specialization;
@@ -552,11 +628,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn account_id;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtDoctorSpecialization;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtDoctorExperience;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnGoDepartment;
+        private System.Windows.Forms.ComboBox сmbSpecialization;
+        private System.Windows.Forms.ComboBox cmbDepartment;
+        private System.Windows.Forms.NumericUpDown txtDoctorCabinet;
+        private System.Windows.Forms.NumericUpDown txtDoctorExperience;
     }
 }
 

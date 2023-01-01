@@ -6,6 +6,7 @@ using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -53,10 +54,12 @@ namespace AppointmentsService
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
                 var query = db.ACCOUNT.Where(s => s.login == txtLogin.Text && s.password == txtPassword.Text).FirstOrDefault<ACCOUNT>();
-                if(query != null)
+                Cursor.Current = Cursors.Default;
+                if (query != null)
                 {
                     if (query.type == "doctor")
                     {
@@ -79,11 +82,18 @@ namespace AppointmentsService
                     MessageBox.Show("Невірні дані для входу!");
                 }
             }
+
         }
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
             txtLogin.Text = txtPassword.Text = String.Empty;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Pateint_Registration pr = new Pateint_Registration();
+            pr.ShowDialog();
         }
     }
 }

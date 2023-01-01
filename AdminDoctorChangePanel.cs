@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Application = System.Windows.Forms.Application;
 
 namespace AppointmentsService
@@ -53,12 +54,20 @@ namespace AppointmentsService
 
         void ClearTextBoxes()
         {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                cmbDepartment.DataSource = db.DEPARTMENT.ToList();
+                cmbDepartment.ValueMember = "department_id";
+                cmbDepartment.DisplayMember = "name";
+            }
             model = new DOCTOR();
             modelAcc = new ACCOUNT();
             model.doctor_id = 0;
             modelAcc.account_id = 0;
-            txtDoctorExperience.Text = txtDoctorSpecialization.Text = txtDoctorDepartment.Text = txtDoctorCabinet.Text = txtDoctorEmail.Text = txtDoctorFio.Text = txtDoctorInfo.Text = txtDoctorLogin.Text = txtDoctorPass.Text = txtDoctorPhone.Text = String.Empty;
+            txtDoctorExperience.Text = txtDoctorCabinet.Text = txtDoctorEmail.Text = txtDoctorFio.Text = txtDoctorInfo.Text = txtDoctorLogin.Text = txtDoctorPass.Text = txtDoctorPhone.Text = String.Empty;
             btnSave.Text = "Save";
+            сmbSpecialization.Text = "Медпрацівник";
+            cmbDepartment.SelectedIndex = -1;
             btnDelete.Enabled = false;
         }
 
@@ -73,13 +82,13 @@ namespace AppointmentsService
             model.name = txtDoctorFio.Text.Trim();
             model.information = txtDoctorInfo.Text.Trim();
             model.email = txtDoctorEmail.Text.Trim();
-            model.specialization = txtDoctorSpecialization.Text.Trim();
+            model.specialization = сmbSpecialization.Text.Trim();
 
             model.phone_number = Regex.Replace(txtDoctorPhone.Text, @"\s+", "");
 
             model.cabinet_number = Int32.Parse(txtDoctorCabinet.Text.Trim());
             model.experience = Int32.Parse(txtDoctorExperience.Text.Trim());
-            model.department_id = Int32.Parse(txtDoctorDepartment.Text.Trim());
+            model.department_id = Convert.ToInt32(cmbDepartment.SelectedValue);
 
             modelAcc.login = txtDoctorLogin.Text.Trim();
             modelAcc.password = txtDoctorPass.Text.Trim();
@@ -88,7 +97,7 @@ namespace AppointmentsService
                 modelAcc.creation_date = DateTime.Now;
                 modelAcc.type = "doctor";
             }
-                
+            Cursor.Current = Cursors.WaitCursor;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
                 if (model.doctor_id == 0)
@@ -99,16 +108,17 @@ namespace AppointmentsService
                     model.account_id = modelAcc.account_id;
                     //MessageBox.Show("adding doc");
                     db.DOCTOR.Add(model);
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show("Added successfully!");
                 }
                 else
                 {
                     db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                     db.Entry(modelAcc).State = System.Data.Entity.EntityState.Modified;
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show("Changed successfully!");
                 }
                 SaveDBChanges(db);
-
             }
             ClearTextBoxes();
             PopulateDoctorDGV();
@@ -133,9 +143,9 @@ namespace AppointmentsService
                     model = db.DOCTOR.Where(x => x.doctor_id == model.doctor_id).FirstOrDefault();
                     modelAcc = db.ACCOUNT.Where(x => x.account_id == model.account_id).FirstOrDefault();
                     txtDoctorCabinet.Text = model.cabinet_number.ToString();
-                    txtDoctorDepartment.Text = model.department_id.ToString();
+                    cmbDepartment.SelectedValue = model.department_id;
                     txtDoctorFio.Text = model.name.ToString();
-                    txtDoctorSpecialization.Text = model.specialization.ToString();
+                    сmbSpecialization.Text = model.specialization.ToString();
                     txtDoctorExperience.Text = model.experience.ToString();
                     txtDoctorEmail.Text = model.email.ToString();
                     txtDoctorInfo.Text = model.information.ToString();
