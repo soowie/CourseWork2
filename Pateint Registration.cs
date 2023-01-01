@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity.Validation;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -45,29 +46,44 @@ namespace AppointmentsService
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            model.name = txtPatientFio.Text.Trim();
-            model.date_of_birth = dateTimePicker.Value;
-            model.email = txtPatientEmail.Text.Trim();
-            model.appointments_overtime = 0;
-            model.phone_number = Regex.Replace(txtPatientPhone.Text, @"\s+", "");
+            if (txtPatientPass.Text.Trim() != txtPatientPass2.Text.Trim())
+            {
+                MessageBox.Show("Паролі не співпадають!");
+                return;
+            }
 
             modelAcc.login = txtPatientLogin.Text.Trim();
             modelAcc.password = txtPatientPass.Text.Trim();
             modelAcc.creation_date = DateTime.Now;
             modelAcc.type = "patient";
+            
+            model.name = txtPatientFio.Text.Trim();
+            model.date_of_birth = dateTimePicker.Value;
+            model.email = txtPatientEmail.Text.Trim();
+            model.appointments_overtime = 0;
+            model.phone_number = Regex.Replace(txtPatientPhone.Text, @"\s+", "");
+            
             Cursor.Current = Cursors.WaitCursor;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
-                db.ACCOUNT.Add(modelAcc);
-                SaveDBChanges(db);
-                model.account_id = modelAcc.account_id;
-                db.PATIENT.Add(model);
-                SaveDBChanges(db);
+                var query = db.ACCOUNT.Where(s => s.login == modelAcc.login).FirstOrDefault<ACCOUNT>();
+                if (query == null || query.is_deleted)
+                {
+                    db.ACCOUNT.Add(modelAcc);
+                    SaveDBChanges(db);
+                    model.account_id = modelAcc.account_id;
+                    db.PATIENT.Add(model);
+                    SaveDBChanges(db);
+                    Cursor.Current = Cursors.Default;
+                    this.Close();
+                    MessageBox.Show($"Акаунт вдало створено. Ваш власний ID: {model.patient_id}");
+                }
+                else
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show("Аккаунт під таким логіном вже інсує, оберіть інший логін!");
+                }
             }
-            Cursor.Current = Cursors.Default;
-            this.Close();
-            MessageBox.Show($"Акаунт вдало створено. Ваш власний ID: {model.patient_id}");
-
         }
     }
 }

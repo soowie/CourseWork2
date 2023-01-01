@@ -57,7 +57,7 @@ namespace AppointmentsService
             Cursor.Current = Cursors.WaitCursor;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
-                var query = db.ACCOUNT.Where(s => s.login == txtLogin.Text && s.password == txtPassword.Text).FirstOrDefault<ACCOUNT>();
+                var query = db.ACCOUNT.Where(s => s.login == txtLogin.Text && s.password == txtPassword.Text && s.is_deleted == false).FirstOrDefault<ACCOUNT>();
                 Cursor.Current = Cursors.Default;
                 if (query != null)
                 {
@@ -67,6 +67,9 @@ namespace AppointmentsService
                     }
                     else if (query.type == "patient")
                     {
+                        PatientWindow pw = new PatientWindow(query.account_id);
+                        pw.Show();
+                        this.Close();
                         MessageBox.Show("Успішний вхід в систему пацієнта!");
                     }
                     else

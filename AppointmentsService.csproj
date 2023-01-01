@@ -109,6 +109,12 @@
     <Compile Include="PATIENT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="PatientWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientWindow.Designer.cs">
+      <DependentUpon>PatientWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminDepartmentChangePanel.resx">
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pateint Registration.resx">
       <DependentUpon>Pateint Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientWindow.resx">
+      <DependentUpon>PatientWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
