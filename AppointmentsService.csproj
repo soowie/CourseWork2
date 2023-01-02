@@ -73,6 +73,12 @@
     <Compile Include="AuthorizationForm.Designer.cs">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAppointment.Designer.cs">
+      <DependentUpon>CreateAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="DEPARTMENT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateAppointment.resx">
+      <DependentUpon>CreateAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pateint Registration.resx">
       <DependentUpon>Pateint Registration.cs</DependentUpon>

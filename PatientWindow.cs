@@ -48,9 +48,25 @@ namespace AppointmentsService
             //dgvDoctors.AutoGenerateColumns = false;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
-                var query = (from doc in db.DOCTOR select new {xd1 = doc.name, d2 = doc.specialization, d3 = doc.rating, d4=doc.experience, d5=doc.patients_count}).ToList();
+                var query = (from doc in db.DOCTOR select new { doctor_id = doc.doctor_id,
+                                                                name = doc.name,
+                                                                specialization = doc.specialization,
+                                                                rating = doc.rating,
+                                                                experience = doc.experience,
+                                                                patients_count = doc.patients_count}).ToList();
                 dgvDoctors.DataSource = query;
+                dgvDoctors.Columns[0].Visible = false;
                 dgvDoctors.Refresh();
+            }
+        }
+
+        private void dgvDoctors_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgvDoctors.CurrentRow.Index != -1)
+            {
+                int doctor_id = Convert.ToInt32(dgvDoctors.CurrentRow.Cells["doctor_id"].Value);
+                CreateAppointment cp = new CreateAppointment(doctor_id);
+                cp.ShowDialog();
             }
         }
     }

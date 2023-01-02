@@ -60,18 +60,19 @@
             // dgvDoctors
             // 
             this.dgvDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDoctors.Location = new System.Drawing.Point(282, 12);
+            this.dgvDoctors.Location = new System.Drawing.Point(282, 10);
             this.dgvDoctors.Name = "dgvDoctors";
             this.dgvDoctors.RowHeadersWidth = 51;
             this.dgvDoctors.RowTemplate.Height = 24;
             this.dgvDoctors.Size = new System.Drawing.Size(506, 266);
             this.dgvDoctors.TabIndex = 7;
+            this.dgvDoctors.DoubleClick += new System.EventHandler(this.dgvDoctors_DoubleClick);
             // 
             // PatientWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 288);
             this.Controls.Add(this.dgvDoctors);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelPatientInfo);
