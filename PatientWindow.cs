@@ -24,6 +24,7 @@ namespace AppointmentsService
             FindAccount(id);
             labelPatientInfo.Text = model.patient_id + " " + model.name;
             PopulateDoctorDGV();
+            dgvDoctors.Refresh();
         }
 
         void FindAccount(int id)
@@ -68,6 +69,12 @@ namespace AppointmentsService
                 CreateAppointment cp = new CreateAppointment(doctor_id);
                 cp.ShowDialog();
             }
+        }
+
+        private void FormClosedAction(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 0)
+                Application.Exit();
         }
     }
 }

@@ -78,6 +78,7 @@
             this.Controls.Add(this.labelPatientInfo);
             this.Name = "PatientWindow";
             this.Text = "PatientWindow";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormClosedAction);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
