@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,7 +12,7 @@ namespace AppointmentsService
 {
     public partial class CreateAppointment : Form
     {
-        DOCTOR model;
+        DOCTOR model = new DOCTOR();
         public CreateAppointment()
         {
             InitializeComponent();
@@ -20,9 +21,31 @@ namespace AppointmentsService
         public CreateAppointment(int id)
         {
             InitializeComponent();
+            dateTimePicker1.Value = DateTime.Now;
             InitModel(id);
+            GetAppointmentsForDate();
+        }
 
-            GetAppointmentsForDate(DateTime.Now);
+        void SaveDBChanges(CourseWorkAppointmentsEntities db)
+        {
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                {
+                    string str = string.Empty;
+                    str += "Object: " + validationError.Entry.Entity.ToString();
+                    str += "\n";
+                    foreach (DbValidationError err in validationError.ValidationErrors)
+                    {
+                        str += err.ErrorMessage + "\n";
+                    }
+                    MessageBox.Show(str);
+                }
+            }
         }
 
         void InitModel(int id)
@@ -31,6 +54,14 @@ namespace AppointmentsService
             {
                 Cursor.Current = Cursors.WaitCursor;
                 model = db.DOCTOR.Where(s => s.doctor_id == id).FirstOrDefault<DOCTOR>();
+                //var distinctPatients = db.APPOINTMENT.Where(s => s.doctor_id == model.doctor_id)
+                //                      .GroupBy(p => p.patient_id)
+                //                      .Select(g => g.First())
+                //                      .Count();
+                //model.patients_count = distinctPatients;
+                //SaveDBChanges(db);
+                DEPARTMENT dep = db.DEPARTMENT.Where(s => s.department_id == model.department_id).FirstOrDefault();
+                lblContacts.Text = $"Відділ: {dep.name}; Адреса: {dep.address}; Поверх: {dep.floor};\nКабінет №{model.cabinet_number}; Мобільний телефон: {model.phone_number}; Електронна пошта: {model.email}";
                 InitRatingBox();
                 Cursor.Current = Cursors.Default;
             }
@@ -39,7 +70,6 @@ namespace AppointmentsService
             txtInfo.Text = model.information;
             lblExp.Text = model.experience.ToString();
             lblPatientCount.Text = model.patients_count.ToString();
-
         }
 
         void InitRatingBox()
@@ -93,20 +123,29 @@ namespace AppointmentsService
             ActiveControl = null;
         }
 
-        void GetAppointmentsForDate(DateTime dt)
+        RadioButton initButton(RadioButton button)
         {
+            button.Enabled = true;
+            button.BackColor = Color.Wheat;
+            return button;
+        }
+
+        void GetAppointmentsForDate()
+        {
+            var buttons = groupBox.Controls.OfType<RadioButton>().Select(x => initButton(x)).ToList();
             List<APPOINTMENT> ap = new List<APPOINTMENT>();
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
-                ap = db.APPOINTMENT.Where(s => DbFunctions.TruncateTime(s.start_time) == dt.Date && s.doctor_id == model.doctor_id).ToList();
+                ap = db.APPOINTMENT.Where(s => DbFunctions.TruncateTime(s.start_time) == dateTimePicker1.Value.Date && s.doctor_id == model.doctor_id).ToList();
+                // витягнули всі записи за дату в аргументі
             }
-            var buttons = groupBox.Controls.OfType<RadioButton>().ToList();
+             // отримали всі кнопки групбоксу
 
-            foreach (var item in ap)
+            foreach (var item in ap) // айтем же кожен запис на обрану дату
             {
-                string gotTime = item.start_time.ToString("HH:mm");
-                var button = buttons.Where(s => s.Text == gotTime).FirstOrDefault();
-                button.Enabled = false;
+                string gotTime = item.start_time.ToString("HH:mm"); // обрати лише час з запису
+                var button = buttons.Where(s => s.Text == gotTime).FirstOrDefault(); // знайти копку саме з обраним часом
+                button.Enabled = button.Checked = false;
                 button.BackColor = Color.Red;
             }
         }
@@ -120,6 +159,28 @@ namespace AppointmentsService
         {
             if (Application.OpenForms.Count == 0)
                 Application.Exit();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            GetAppointmentsForDate();
+        }
+
+        private void btnPrevDate_Click(object sender, EventArgs e)
+        {
+            if (dateTimePicker1.Value.AddDays(-1) >= DateTime.Now)
+            {
+                dateTimePicker1.Value = dateTimePicker1.Value.AddDays(-1);
+            }
+            else
+            {
+                dateTimePicker1.Value = DateTime.Now;
+            }
+        }
+
+        private void btnNextDate_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddDays(1);
         }
     }
 }
