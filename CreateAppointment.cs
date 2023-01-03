@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
 using RadioButton = System.Windows.Forms.RadioButton;
@@ -13,14 +14,17 @@ namespace AppointmentsService
     public partial class CreateAppointment : Form
     {
         DOCTOR model = new DOCTOR();
+        int PatientID;
         public CreateAppointment()
         {
             InitializeComponent();
         }
 
-        public CreateAppointment(int id)
+        public CreateAppointment(int id, int patientid)
         {
+            PatientID = patientid;
             InitializeComponent();
+            dateTimePicker1.MinDate = DateTime.Now;
             dateTimePicker1.Value = DateTime.Now;
             InitModel(id);
             GetAppointmentsForDate();
@@ -56,12 +60,11 @@ namespace AppointmentsService
                 model = db.DOCTOR.Where(s => s.doctor_id == id).FirstOrDefault<DOCTOR>();
                 //var distinctPatients = db.APPOINTMENT.Where(s => s.doctor_id == model.doctor_id)
                 //                      .GroupBy(p => p.patient_id)
-                //                      .Select(g => g.First())
                 //                      .Count();
                 //model.patients_count = distinctPatients;
                 //SaveDBChanges(db);
                 DEPARTMENT dep = db.DEPARTMENT.Where(s => s.department_id == model.department_id).FirstOrDefault();
-                lblContacts.Text = $"Відділ: {dep.name}; Адреса: {dep.address}; Поверх: {dep.floor};\nКабінет №{model.cabinet_number}; Мобільний телефон: {model.phone_number}; Електронна пошта: {model.email}";
+                lblContacts.Text = $"Адреса: {dep.address};\nПоверх: {dep.floor}; Відділ: {dep.name}; Кабінет №{model.cabinet_number};\nМобільний телефон: {model.phone_number}; Електронна пошта: {model.email}";
                 InitRatingBox();
                 Cursor.Current = Cursors.Default;
             }
@@ -79,10 +82,11 @@ namespace AppointmentsService
                 using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
                 {
                     List<double> list;
-                    list = db.APPOINTMENT.Where(s => s.patient_rating != null && s.doctor_id == model.doctor_id).Select(s => s.patient_rating).ToList();
+                    list = db.APPOINTMENT.Where(s => s.patient_rating != 0 && s.doctor_id == model.doctor_id).Select(s => s.patient_rating).ToList();
                     if (list.Count != 0)
                     {
-                        model.rating = list.Sum() / list.Count;
+                        db.DOCTOR.SingleOrDefault(b => b.doctor_id == model.doctor_id).rating = list.Sum() / list.Count;
+                        SaveDBChanges(db);
                         txtRating.Text = model.rating.ToString();
                         txtRating.ForeColor = Color.Black;
                         if (model.rating >= 4.5) txtRating.BackColor = Color.OliveDrab;
@@ -168,19 +172,86 @@ namespace AppointmentsService
 
         private void btnPrevDate_Click(object sender, EventArgs e)
         {
-            if (dateTimePicker1.Value.AddDays(-1) >= DateTime.Now)
+            if (dateTimePicker1.Value.AddDays(-1) >= dateTimePicker1.MinDate)
             {
                 dateTimePicker1.Value = dateTimePicker1.Value.AddDays(-1);
             }
             else
             {
-                dateTimePicker1.Value = DateTime.Now;
+                dateTimePicker1.Value = dateTimePicker1.MinDate;
             }
         }
 
         private void btnNextDate_Click(object sender, EventArgs e)
         {
-            dateTimePicker1.Value = dateTimePicker1.Value.AddDays(1);
+            if (dateTimePicker1.Value.AddDays(1) <= dateTimePicker1.MaxDate)
+            {
+                dateTimePicker1.Value = dateTimePicker1.Value.AddDays(1);
+            }
+            else
+            {
+                dateTimePicker1.Value = dateTimePicker1.MaxDate;
+            }
+        }
+
+        private void lblPatientCount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                APPOINTMENT apmodel = new APPOINTMENT();
+                apmodel.patient_id = PatientID;
+                apmodel.doctor_id = model.doctor_id;
+                var pickerdate = dateTimePicker1.Value;
+                var selectedButton = groupBox.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
+                int hrs = Convert.ToInt32(selectedButton.Text.Split(':')[0]);
+                int mins = Convert.ToInt32(selectedButton.Text.Split(':')[1]);
+                int minEnd = mins + 20;
+                int secs = 0;
+                DateTime dt1 = new DateTime(pickerdate.Year, pickerdate.Month, pickerdate.Day, hrs, mins, secs);
+                DateTime dt2 = new DateTime(pickerdate.Year, pickerdate.Month, pickerdate.Day, hrs, minEnd, secs);
+                apmodel.start_time = dt1;
+                apmodel.end_time = dt2;
+                if (db.APPOINTMENT.Where(x => x.doctor_id == apmodel.doctor_id && x.patient_id == apmodel.patient_id).Count() == 0)
+                {
+                    db.DOCTOR.SingleOrDefault(b => b.doctor_id == apmodel.doctor_id).patients_count++;
+                }
+                db.APPOINTMENT.Add(apmodel);
+                db.PATIENT.SingleOrDefault(b => b.patient_id == apmodel.patient_id).appointments_overtime++; // increase appointment counter
+                SaveDBChanges(db);
+                Cursor.Current = Cursors.Default;
+                if (MessageBox.Show("Запис створено. Чи бажаєте ви роздрукув?", "Друк талону про запис", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    PrintInfo();
+                }
+            }
+            GetAppointmentsForDate();
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            // Set the font and draw the text
+            Font font = new Font("Arial", 12);
+            e.Graphics.DrawString("Info!", font, Brushes.Black, 50, 50);
+            e.Graphics.DrawString("LOOOOOl dsof]ksdoisaovdsaovhduhdapsovjn[uhpvciudsvnshdvbhsvnhbsudavbadsnvouhdafbpvisabdhvousadbpvnisadovbhuyasdbvhpisodbavusdabvps v\ncccccccccccc", font, Brushes.Black, 50, 100);
+            e.Graphics.DrawString("xddd\n\nnot me", font, Brushes.Black, 50, 150);
+        }
+
+        private void PrintInfo()
+        {
+            // Display the print dialog
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.Document = printDocument1;
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Print the document
+                printDocument1.Print();
+            }
         }
     }
 }
