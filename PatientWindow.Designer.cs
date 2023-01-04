@@ -32,7 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dgvDoctors = new System.Windows.Forms.DataGridView();
             this.btnEditProfile = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPassChange = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvAppointment = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -93,19 +93,19 @@
             this.btnEditProfile.UseVisualStyleBackColor = false;
             this.btnEditProfile.Click += new System.EventHandler(this.Logout_Click);
             // 
-            // button2
+            // btnPassChange
             // 
-            this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button2.BackColor = System.Drawing.Color.Cornsilk;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(12, 53);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(314, 35);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Змінити пароль";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.Logout_Click);
+            this.btnPassChange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnPassChange.BackColor = System.Drawing.Color.Cornsilk;
+            this.btnPassChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPassChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnPassChange.Location = new System.Drawing.Point(12, 53);
+            this.btnPassChange.Name = "btnPassChange";
+            this.btnPassChange.Size = new System.Drawing.Size(314, 35);
+            this.btnPassChange.TabIndex = 6;
+            this.btnPassChange.Text = "Змінити пароль";
+            this.btnPassChange.UseVisualStyleBackColor = false;
+            this.btnPassChange.Click += new System.EventHandler(this.btnPassChange_Click);
             // 
             // label1
             // 
@@ -150,12 +150,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvAppointment);
             this.Controls.Add(this.dgvDoctors);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPassChange);
             this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelPatientInfo);
             this.Name = "PatientWindow";
-            this.Text = "propo";
+            this.Text = "Особистий кабінет пацієнта";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormClosedAction);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).EndInit();
@@ -170,7 +170,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvDoctors;
         private System.Windows.Forms.Button btnEditProfile;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPassChange;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvAppointment;
         private System.Windows.Forms.Label label2;

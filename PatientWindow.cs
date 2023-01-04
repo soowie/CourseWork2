@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Reflection.Emit;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace AppointmentsService
@@ -11,6 +15,7 @@ namespace AppointmentsService
     {
         public PATIENT model;
         public int ID;
+        public bool PassAllowed = false;
         public PatientWindow()
         {
             InitializeComponent();
@@ -53,7 +58,8 @@ namespace AppointmentsService
             dgvAppointment.AutoGenerateColumns = true;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
-                var query = (from apo in db.APPOINTMENT where apo.patient_id == model.patient_id
+                var query = (from apo in db.APPOINTMENT
+                             where apo.patient_id == model.patient_id
                              join doc in db.DOCTOR on apo.doctor_id equals doc.doctor_id
                              select new
                              {
@@ -171,5 +177,25 @@ namespace AppointmentsService
             InitInfo();
         }
 
+        private void btnPassChange_Click(object sender, EventArgs e)
+        {
+            var smtpClient = new SmtpClient("smtp-relay.sendinblue.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("dd28112003dd@gmail.com", "psMU9v3C8VgbLhtn"),
+                EnableSsl = true,
+            };
+            string resetcode = new Random().Next(0, 1000000).ToString("D6");
+            smtpClient.Send("dd28112003dd@gmail.com", model.email, "Your code for password reset", resetcode);
+            ResetConfirmation rc = new ResetConfirmation(this, resetcode);
+            rc.ShowDialog();
+            if (PassAllowed)
+            {
+                MessageBox.Show("Тепер Ви можете змінити пароль для акаунту!");
+                PasswordChanger pc = new PasswordChanger(ID);
+                pc.ShowDialog();
+            }
+            PassAllowed = false;
+        }
     }
 }
