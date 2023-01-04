@@ -79,37 +79,21 @@ namespace AppointmentsService
         {
             if (model.rating == null)
             {
-                using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
-                {
-                    List<double> list;
-                    list = db.APPOINTMENT.Where(s => s.patient_rating != 0 && s.doctor_id == model.doctor_id).Select(s => s.patient_rating).ToList();
-                    if (list.Count != 0)
-                    {
-                        db.DOCTOR.SingleOrDefault(b => b.doctor_id == model.doctor_id).rating = list.Sum() / list.Count;
-                        SaveDBChanges(db);
-                        txtRating.Text = model.rating.ToString();
-                        txtRating.ForeColor = Color.Black;
-                        if (model.rating >= 4.5) txtRating.BackColor = Color.OliveDrab;
-                        else if (model.rating >= 4 && model.rating < 4.5) txtRating.BackColor = Color.YellowGreen;
-                        else if (model.rating >= 3 && model.rating < 4) txtRating.BackColor = Color.Yellow;
-                        else if (model.rating >= 2 && model.rating < 3) txtRating.BackColor = Color.Orange;
-                        else if (model.rating >= 1 && model.rating < 2) txtRating.BackColor = Color.OrangeRed;
-                        else if (model.rating < 1)
-                        {
-                            txtRating.BackColor = Color.Red;
-                            txtRating.ForeColor = Color.White;
-                        }
-                    }
-                    else
-                    {
-                        txtRating.Text = "N/A";
-                    }
-
-                }
+                txtRating.Text = "N/A";
             }
             else
             {
-                txtRating.Text = "N/A";
+                txtRating.Text = model.rating.ToString();
+                if (model.rating >= 4.5) txtRating.BackColor = Color.OliveDrab;
+                else if (model.rating >= 4 && model.rating < 4.5) txtRating.BackColor = Color.YellowGreen;
+                else if (model.rating >= 3 && model.rating < 4) txtRating.BackColor = Color.Yellow;
+                else if (model.rating >= 2 && model.rating < 3) txtRating.BackColor = Color.Orange;
+                else if (model.rating >= 1 && model.rating < 2) txtRating.BackColor = Color.OrangeRed;
+                else if (model.rating < 1)
+                {
+                    txtRating.BackColor = Color.Black;
+                    txtRating.ForeColor = Color.White;
+                }
             }
         }
 
@@ -130,7 +114,7 @@ namespace AppointmentsService
         RadioButton initButton(RadioButton button)
         {
             button.Enabled = true;
-            button.BackColor = Color.Wheat;
+            button.BackColor = Color.GreenYellow;
             return button;
         }
 

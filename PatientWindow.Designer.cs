@@ -66,16 +66,16 @@
             // 
             // dgvDoctors
             // 
-            this.dgvDoctors.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvDoctors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvDoctors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDoctors.Location = new System.Drawing.Point(357, 141);
+            this.dgvDoctors.Location = new System.Drawing.Point(625, 141);
             this.dgvDoctors.Name = "dgvDoctors";
             this.dgvDoctors.ReadOnly = true;
             this.dgvDoctors.RowHeadersWidth = 51;
             this.dgvDoctors.RowTemplate.Height = 24;
-            this.dgvDoctors.Size = new System.Drawing.Size(572, 312);
+            this.dgvDoctors.Size = new System.Drawing.Size(670, 416);
             this.dgvDoctors.TabIndex = 7;
             this.dgvDoctors.DoubleClick += new System.EventHandler(this.dgvDoctors_DoubleClick);
             // 
@@ -110,7 +110,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(354, 122);
+            this.label1.Location = new System.Drawing.Point(622, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(282, 16);
             this.label1.TabIndex = 8;
@@ -120,14 +120,16 @@
             // 
             this.dgvAppointment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvAppointment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAppointment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppointment.Location = new System.Drawing.Point(12, 141);
             this.dgvAppointment.Name = "dgvAppointment";
             this.dgvAppointment.ReadOnly = true;
             this.dgvAppointment.RowHeadersWidth = 51;
             this.dgvAppointment.RowTemplate.Height = 24;
-            this.dgvAppointment.Size = new System.Drawing.Size(314, 312);
+            this.dgvAppointment.Size = new System.Drawing.Size(587, 416);
             this.dgvAppointment.TabIndex = 7;
+            this.dgvAppointment.DoubleClick += new System.EventHandler(this.dgvAppointment_DoubleClick);
             // 
             // label2
             // 
@@ -143,7 +145,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(941, 465);
+            this.ClientSize = new System.Drawing.Size(1307, 569);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvAppointment);
@@ -153,7 +155,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelPatientInfo);
             this.Name = "PatientWindow";
-            this.Text = "PatientWindow";
+            this.Text = "propo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormClosedAction);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).EndInit();

@@ -10,6 +10,7 @@ namespace AppointmentsService
     public partial class PatientWindow : Form
     {
         public PATIENT model;
+        public int ID;
         public PatientWindow()
         {
             InitializeComponent();
@@ -17,8 +18,8 @@ namespace AppointmentsService
 
         public PatientWindow(int id)
         {
+            ID = id;
             InitializeComponent();
-            FindAccount(id);
             InitInfo();
             PopulateDoctorDGV();
             PopulateAppointmentDGV();
@@ -27,14 +28,15 @@ namespace AppointmentsService
 
         void InitInfo()
         {
+            FindAccount();
             labelPatientInfo.Text = $"ID: {model.patient_id}. {model.name}\n{GetAgeFromDT(model.date_of_birth)} років, всього записів - {model.appointments_overtime}\nПошта: {model.email} , телефон: {model.phone_number}";
         }
-        void FindAccount(int id)
+        void FindAccount()
         {
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
                 Cursor.Current = Cursors.WaitCursor;
-                model = db.PATIENT.Where(s => s.account_id == id).FirstOrDefault<PATIENT>();
+                model = db.PATIENT.Where(s => s.account_id == ID).FirstOrDefault<PATIENT>();
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -71,6 +73,10 @@ namespace AppointmentsService
             //dgvDoctors.AutoGenerateColumns = false;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
+                foreach (var item in db.DOCTOR)
+                {
+                    InitRating(item);
+                }
                 var query = (from doc in db.DOCTOR
                              select new
                              {
@@ -81,10 +87,6 @@ namespace AppointmentsService
                                  experience = doc.experience,
                                  patients_count = doc.patients_count
                              }).ToList();
-                foreach (var item in db.DOCTOR.Where(x => x.rating == null))
-                {
-                    InitRating(item);
-                }
                 dgvDoctors.DataSource = query;
                 dgvDoctors.Columns[0].Visible = false;
                 dgvDoctors.Refresh();
@@ -128,7 +130,7 @@ namespace AppointmentsService
                 list = db.APPOINTMENT.Where(s => s.patient_rating != 0 && s.doctor_id == doc.doctor_id).Select(s => s.patient_rating).ToList();
                 if (list.Count != 0)
                 {
-                    db.DOCTOR.SingleOrDefault(b => b.doctor_id == doc.doctor_id).rating = list.Sum() / list.Count;
+                    db.DOCTOR.SingleOrDefault(b => b.doctor_id == doc.doctor_id).rating = Math.Round(list.Sum() / list.Count, 2);
                     SaveDBChanges(db);
                 }
             }
@@ -155,5 +157,19 @@ namespace AppointmentsService
                 }
             }
         }
+
+        private void dgvAppointment_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgvAppointment.CurrentRow.Index != -1)
+            {
+                int appointment_id = Convert.ToInt32(dgvAppointment.CurrentRow.Cells["appointment_id"].Value);
+                RateAppointment ra = new RateAppointment(appointment_id);
+                ra.ShowDialog();
+            }
+            PopulateAppointmentDGV();
+            PopulateDoctorDGV();
+            InitInfo();
+        }
+
     }
 }
