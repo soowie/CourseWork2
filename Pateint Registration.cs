@@ -67,7 +67,15 @@ namespace AppointmentsService
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
                 var query = db.ACCOUNT.Where(s => s.login == modelAcc.login).FirstOrDefault<ACCOUNT>();
-                if (query == null || query.is_deleted)
+                var sameLoginPatient = db.PATIENT.Where(s => s.email == model.email).FirstOrDefault<PATIENT>();
+                if (sameLoginPatient != null)
+                {
+                    if (!db.ACCOUNT.Where(s => s.account_id == sameLoginPatient.account_id).FirstOrDefault<ACCOUNT>().is_deleted)
+                    {
+                        MessageBox.Show("Така пошта вже зайнята!");
+                    }
+                }
+                else if (query == null || query.is_deleted)
                 {
                     db.ACCOUNT.Add(modelAcc);
                     SaveDBChanges(db);

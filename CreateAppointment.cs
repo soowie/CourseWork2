@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -236,6 +237,57 @@ namespace AppointmentsService
                 // Print the document
                 printDocument1.Print();
             }
+        }
+
+        private void btnAutoAppointment_Click(object sender, EventArgs e)
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                //var allappointments = db.APPOINTMENT.Where(b => b.start_time >= DateTime.Now).OrderBy(x => x.start_time).ToList();
+                var allappointments = db.APPOINTMENT.Where(b => b.start_time >= DateTime.Now && b.doctor_id == model.doctor_id).OrderBy(x => x.start_time).ToList();
+                List<DateTime> possibleTimesForDay = new List<DateTime>();
+
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 11, 0, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 12, 0, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 13, 0, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 14, 0, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 15, 0, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 16, 0, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 17, 0, 0));
+
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 11, 30, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 12, 30, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 13, 30, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 14, 30, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 15, 30, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 16, 30, 0));
+                possibleTimesForDay.Add(new DateTime(1, 1, 1, 17, 30, 0));
+                DateTime foundTime = DateTime.Now;
+                bool didFind = false;
+                DateTime startTime = DateTime.Now;
+                while (startTime < dateTimePicker1.MaxDate)
+                {
+                    var timesForCurrentDate = possibleTimesForDay.Select(x => CreateDateFromTime(startTime.Year, startTime.Month, startTime.Day, x)).Where(x => x > DateTime.Now && allappointments.Select(m => m.start_time).Contains(x) == false).ToList();
+                    if (timesForCurrentDate != null && timesForCurrentDate.Count != 0)
+                    {
+                        timesForCurrentDate.Sort();
+                        foundTime = timesForCurrentDate[0];
+                        didFind = true;
+                        break;
+                    }
+                    else
+                    {
+                        startTime = startTime.AddDays(1);
+                    }
+                }
+                if (didFind)
+                MessageBox.Show($"Done! Your time is {foundTime}");
+            }
+        }
+
+        public static DateTime CreateDateFromTime(int year, int month, int day, DateTime time)
+        {
+            return new DateTime(year, month, day, time.Hour, time.Minute, 0);
         }
     }
 }

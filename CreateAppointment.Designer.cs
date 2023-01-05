@@ -58,6 +58,7 @@
             this.btnPrevDate = new System.Windows.Forms.Button();
             this.btnNextDate = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.btnAutoAppointment = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -410,14 +411,32 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // btnAutoAppointment
+            // 
+            this.btnAutoAppointment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAutoAppointment.BackColor = System.Drawing.Color.OliveDrab;
+            this.btnAutoAppointment.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAutoAppointment.FlatAppearance.BorderSize = 2;
+            this.btnAutoAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoAppointment.Font = new System.Drawing.Font("Palace Script MT", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAutoAppointment.ForeColor = System.Drawing.Color.White;
+            this.btnAutoAppointment.Location = new System.Drawing.Point(516, 454);
+            this.btnAutoAppointment.Name = "btnAutoAppointment";
+            this.btnAutoAppointment.Size = new System.Drawing.Size(178, 40);
+            this.btnAutoAppointment.TabIndex = 7;
+            this.btnAutoAppointment.Text = "Автозапис";
+            this.btnAutoAppointment.UseVisualStyleBackColor = false;
+            this.btnAutoAppointment.Click += new System.EventHandler(this.btnAutoAppointment_Click);
+            // 
             // CreateAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(582, 504);
+            this.ClientSize = new System.Drawing.Size(706, 504);
             this.Controls.Add(this.btnNextDate);
             this.Controls.Add(this.btnPrevDate);
+            this.Controls.Add(this.btnAutoAppointment);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.groupBox);
@@ -475,5 +494,6 @@
         private System.Windows.Forms.Button btnPrevDate;
         private System.Windows.Forms.Button btnNextDate;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button btnAutoAppointment;
     }
 }

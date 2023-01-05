@@ -49,44 +49,44 @@
             // 
             // txtPatientPass
             // 
-            this.txtPatientPass.Location = new System.Drawing.Point(243, 184);
+            this.txtPatientPass.Location = new System.Drawing.Point(249, 184);
             this.txtPatientPass.Name = "txtPatientPass";
-            this.txtPatientPass.Size = new System.Drawing.Size(172, 22);
+            this.txtPatientPass.Size = new System.Drawing.Size(183, 22);
             this.txtPatientPass.TabIndex = 28;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(243, 184);
+            this.textBox6.Location = new System.Drawing.Point(249, 184);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(172, 22);
+            this.textBox6.Size = new System.Drawing.Size(183, 22);
             this.textBox6.TabIndex = 26;
             // 
             // txtPatientLogin
             // 
-            this.txtPatientLogin.Location = new System.Drawing.Point(243, 157);
+            this.txtPatientLogin.Location = new System.Drawing.Point(249, 157);
             this.txtPatientLogin.Name = "txtPatientLogin";
-            this.txtPatientLogin.Size = new System.Drawing.Size(172, 22);
+            this.txtPatientLogin.Size = new System.Drawing.Size(183, 22);
             this.txtPatientLogin.TabIndex = 25;
             // 
             // txtPatientPhone
             // 
-            this.txtPatientPhone.Location = new System.Drawing.Point(243, 102);
+            this.txtPatientPhone.Location = new System.Drawing.Point(249, 102);
             this.txtPatientPhone.Name = "txtPatientPhone";
-            this.txtPatientPhone.Size = new System.Drawing.Size(172, 22);
+            this.txtPatientPhone.Size = new System.Drawing.Size(183, 22);
             this.txtPatientPhone.TabIndex = 20;
             // 
             // txtPatientEmail
             // 
-            this.txtPatientEmail.Location = new System.Drawing.Point(243, 74);
+            this.txtPatientEmail.Location = new System.Drawing.Point(249, 74);
             this.txtPatientEmail.Name = "txtPatientEmail";
-            this.txtPatientEmail.Size = new System.Drawing.Size(172, 22);
+            this.txtPatientEmail.Size = new System.Drawing.Size(183, 22);
             this.txtPatientEmail.TabIndex = 19;
             // 
             // txtPatientFio
             // 
-            this.txtPatientFio.Location = new System.Drawing.Point(243, 18);
+            this.txtPatientFio.Location = new System.Drawing.Point(249, 18);
             this.txtPatientFio.Name = "txtPatientFio";
-            this.txtPatientFio.Size = new System.Drawing.Size(172, 22);
+            this.txtPatientFio.Size = new System.Drawing.Size(183, 22);
             this.txtPatientFio.TabIndex = 27;
             // 
             // btnCancel
@@ -183,16 +183,16 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(243, 46);
+            this.dateTimePicker.Location = new System.Drawing.Point(249, 46);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(172, 22);
+            this.dateTimePicker.Size = new System.Drawing.Size(183, 22);
             this.dateTimePicker.TabIndex = 29;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(27, 214);
+            this.label5.Location = new System.Drawing.Point(30, 212);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(210, 20);
             this.label5.TabIndex = 8;
@@ -200,9 +200,9 @@
             // 
             // txtPatientPass2
             // 
-            this.txtPatientPass2.Location = new System.Drawing.Point(243, 212);
+            this.txtPatientPass2.Location = new System.Drawing.Point(249, 212);
             this.txtPatientPass2.Name = "txtPatientPass2";
-            this.txtPatientPass2.Size = new System.Drawing.Size(172, 22);
+            this.txtPatientPass2.Size = new System.Drawing.Size(183, 22);
             this.txtPatientPass2.TabIndex = 28;
             // 
             // Pateint_Registration
