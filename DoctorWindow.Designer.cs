@@ -32,6 +32,10 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.labelPatientInfo = new System.Windows.Forms.Label();
             this.dgvAppointment = new System.Windows.Forms.DataGridView();
+            this.radioPlanned = new System.Windows.Forms.RadioButton();
+            this.radioDone = new System.Windows.Forms.RadioButton();
+            this.checkRating = new System.Windows.Forms.CheckBox();
+            this.radioAll = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,14 +83,61 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAppointment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAppointment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAppointment.Location = new System.Drawing.Point(22, 167);
+            this.dgvAppointment.Location = new System.Drawing.Point(22, 203);
             this.dgvAppointment.Name = "dgvAppointment";
             this.dgvAppointment.ReadOnly = true;
             this.dgvAppointment.RowHeadersWidth = 51;
             this.dgvAppointment.RowTemplate.Height = 24;
-            this.dgvAppointment.Size = new System.Drawing.Size(1126, 362);
+            this.dgvAppointment.Size = new System.Drawing.Size(1126, 326);
             this.dgvAppointment.TabIndex = 11;
             this.dgvAppointment.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAppointment_CellFormatting);
+            // 
+            // radioPlanned
+            // 
+            this.radioPlanned.AutoSize = true;
+            this.radioPlanned.Location = new System.Drawing.Point(22, 144);
+            this.radioPlanned.Name = "radioPlanned";
+            this.radioPlanned.Size = new System.Drawing.Size(148, 20);
+            this.radioPlanned.TabIndex = 12;
+            this.radioPlanned.Text = "Лише заплановані";
+            this.radioPlanned.UseVisualStyleBackColor = true;
+            this.radioPlanned.CheckedChanged += new System.EventHandler(this.radioPlanned_CheckedChanged);
+            // 
+            // radioDone
+            // 
+            this.radioDone.AutoSize = true;
+            this.radioDone.Location = new System.Drawing.Point(22, 170);
+            this.radioDone.Name = "radioDone";
+            this.radioDone.Size = new System.Drawing.Size(122, 20);
+            this.radioDone.TabIndex = 12;
+            this.radioDone.TabStop = true;
+            this.radioDone.Text = "Лише прийняті";
+            this.radioDone.UseVisualStyleBackColor = true;
+            this.radioDone.CheckedChanged += new System.EventHandler(this.radioDone_CheckedChanged);
+            // 
+            // checkRating
+            // 
+            this.checkRating.AutoSize = true;
+            this.checkRating.Location = new System.Drawing.Point(22, 92);
+            this.checkRating.Name = "checkRating";
+            this.checkRating.Size = new System.Drawing.Size(111, 20);
+            this.checkRating.TabIndex = 13;
+            this.checkRating.Text = "З рейтингом";
+            this.checkRating.UseVisualStyleBackColor = true;
+            this.checkRating.CheckedChanged += new System.EventHandler(this.checkRating_CheckedChanged);
+            // 
+            // radioAll
+            // 
+            this.radioAll.AutoSize = true;
+            this.radioAll.Checked = true;
+            this.radioAll.Location = new System.Drawing.Point(22, 118);
+            this.radioAll.Name = "radioAll";
+            this.radioAll.Size = new System.Drawing.Size(97, 20);
+            this.radioAll.TabIndex = 12;
+            this.radioAll.TabStop = true;
+            this.radioAll.Text = "Усі записи";
+            this.radioAll.UseVisualStyleBackColor = true;
+            this.radioAll.CheckedChanged += new System.EventHandler(this.radioAll_CheckedChanged);
             // 
             // DoctorWindow
             // 
@@ -95,6 +146,10 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1170, 551);
+            this.Controls.Add(this.checkRating);
+            this.Controls.Add(this.radioDone);
+            this.Controls.Add(this.radioAll);
+            this.Controls.Add(this.radioPlanned);
             this.Controls.Add(this.dgvAppointment);
             this.Controls.Add(this.btnPrintPlan);
             this.Controls.Add(this.btnLogout);
@@ -115,5 +170,9 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Label labelPatientInfo;
         private System.Windows.Forms.DataGridView dgvAppointment;
+        private System.Windows.Forms.RadioButton radioPlanned;
+        private System.Windows.Forms.RadioButton radioDone;
+        private System.Windows.Forms.CheckBox checkRating;
+        private System.Windows.Forms.RadioButton radioAll;
     }
 }
