@@ -63,6 +63,9 @@ namespace AppointmentsService
                 {
                     if (query.type == "doctor")
                     {
+                        DoctorWindow dw = new DoctorWindow(query.account_id);
+                        dw.Show();
+                        this.Close();
                         MessageBox.Show("Успішний вхід в систему лікаря!");
                     }
                     else if (query.type == "patient")

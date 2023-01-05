@@ -107,6 +107,12 @@
     <Compile Include="AdminDoctorChangePanel.Designer.cs">
       <DependentUpon>AdminDoctorChangePanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="DoctorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoctorWindow.Designer.cs">
+      <DependentUpon>DoctorWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditProfileInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAppointment.resx">
       <DependentUpon>CreateAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoctorWindow.resx">
+      <DependentUpon>DoctorWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditProfileInfo.resx">
       <DependentUpon>EditProfileInfo.cs</DependentUpon>
