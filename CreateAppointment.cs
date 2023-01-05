@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using System.Windows.Media;
 using RadioButton = System.Windows.Forms.RadioButton;
+using Color = System.Drawing.Color;
+using Brushes = System.Drawing.Brushes;
 
 namespace AppointmentsService
 {
@@ -128,7 +131,16 @@ namespace AppointmentsService
                 ap = db.APPOINTMENT.Where(s => DbFunctions.TruncateTime(s.start_time) == dateTimePicker1.Value.Date && s.doctor_id == model.doctor_id).ToList();
                 // витягнули всі записи за дату в аргументі
             }
-             // отримали всі кнопки групбоксу
+            // отримали всі кнопки групбоксу
+
+            foreach (var button in buttons)
+            {
+                if (new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, dateTimePicker1.Value.Day, Int32.Parse(button.Text.Split(':')[0]), Int32.Parse(button.Text.Split(':')[1]), 0) < DateTime.Now)
+                {
+                    button.Enabled = button.Checked = false;
+                    button.BackColor = Color.Red;
+                }
+            }
 
             foreach (var item in ap) // айтем же кожен запис на обрану дату
             {
@@ -186,6 +198,11 @@ namespace AppointmentsService
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            var selectedButton = groupBox.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
+            if (selectedButton == null)
+            {
+                MessageBox.Show("Оберіть хоча б один час!");
+            }
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
                 Cursor.Current = Cursors.WaitCursor;
@@ -193,7 +210,7 @@ namespace AppointmentsService
                 apmodel.patient_id = PatientID;
                 apmodel.doctor_id = model.doctor_id;
                 var pickerdate = dateTimePicker1.Value;
-                var selectedButton = groupBox.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
+                
                 int hrs = Convert.ToInt32(selectedButton.Text.Split(':')[0]);
                 int mins = Convert.ToInt32(selectedButton.Text.Split(':')[1]);
                 int minEnd = mins + 20;
@@ -210,7 +227,7 @@ namespace AppointmentsService
                 db.PATIENT.SingleOrDefault(b => b.patient_id == apmodel.patient_id).appointments_overtime++; // increase appointment counter
                 SaveDBChanges(db);
                 Cursor.Current = Cursors.Default;
-                if (MessageBox.Show("Запис створено. Чи бажаєте ви роздрукув?", "Друк талону про запис", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Запис створено. Чи бажаєте ви роздрукувавти талон?", "Друк талону про запис", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     PrintInfo();
                 }
@@ -281,7 +298,30 @@ namespace AppointmentsService
                     }
                 }
                 if (didFind)
-                MessageBox.Show($"Done! Your time is {foundTime}");
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    APPOINTMENT apmodel = new APPOINTMENT();
+                    apmodel.patient_id = PatientID;
+                    apmodel.doctor_id = model.doctor_id;
+
+                    apmodel.start_time = foundTime;
+                    apmodel.end_time = foundTime.AddMinutes(20);
+                    if (db.APPOINTMENT.Where(x => x.doctor_id == apmodel.doctor_id && x.patient_id == apmodel.patient_id).Count() == 0)
+                    {
+                        db.DOCTOR.SingleOrDefault(b => b.doctor_id == apmodel.doctor_id).patients_count++;
+                    }
+                    db.APPOINTMENT.Add(apmodel);
+                    db.PATIENT.SingleOrDefault(b => b.patient_id == apmodel.patient_id).appointments_overtime++; // increase appointment counter
+                    SaveDBChanges(db);
+                    Cursor.Current = Cursors.Default;
+                    if (MessageBox.Show("Запис створено. Чи бажаєте ви роздрукувати талон?", "Друк талону про запис", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        PrintInfo();
+                    }
+                    GetAppointmentsForDate();
+                    MessageBox.Show($"Done! Your time is {foundTime}");
+                }
+
             }
         }
 

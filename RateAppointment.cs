@@ -57,9 +57,9 @@ namespace AppointmentsService
                 db.APPOINTMENT.Where(x => x.appointment_id == model.appointment_id).FirstOrDefault().patient_rating = (double)numRating.Value;
                 model.patient_rating = (double)numRating.Value;
                 SaveDBChanges(db);
-                MessageBox.Show("Оцінка успішно додана!");
             }
             GetFields();
+            MessageBox.Show("Оцінка успішно додана!");
         }
 
         void SaveDBChanges(CourseWorkAppointmentsEntities db)
