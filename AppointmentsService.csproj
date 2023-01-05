@@ -107,6 +107,12 @@
     <Compile Include="AdminDoctorChangePanel.Designer.cs">
       <DependentUpon>AdminDoctorChangePanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditProfileInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditProfileInfo.Designer.cs">
+      <DependentUpon>EditProfileInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAppointment.resx">
       <DependentUpon>CreateAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProfileInfo.resx">
+      <DependentUpon>EditProfileInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordChanger.resx">
       <DependentUpon>PasswordChanger.cs</DependentUpon>

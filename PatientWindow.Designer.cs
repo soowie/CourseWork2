@@ -91,7 +91,7 @@
             this.btnEditProfile.TabIndex = 6;
             this.btnEditProfile.Text = "Редагувати дані";
             this.btnEditProfile.UseVisualStyleBackColor = false;
-            this.btnEditProfile.Click += new System.EventHandler(this.Logout_Click);
+            this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
             // 
             // btnPassChange
             // 

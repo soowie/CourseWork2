@@ -11,47 +11,47 @@ using System.Windows.Forms;
 
 namespace AppointmentsService
 {
-    public partial class PasswordChanger : Form
+    public partial class EditProfileInfo : Form
     {
-
-        public int AccountID;
-        public PasswordChanger()
+        PATIENT patient;
+        int ID;
+        public EditProfileInfo()
         {
             InitializeComponent();
         }
 
-        public PasswordChanger(int AccId)
+        public EditProfileInfo(int id)
         {
-            AccountID = AccId;
             InitializeComponent();
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            string prevPass;
-            int accid;
+            ID = id;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
-                prevPass = db.ACCOUNT.Where(x => x.account_id == AccountID).FirstOrDefault().password;
+                patient = db.PATIENT.Where(x => x.patient_id == ID).FirstOrDefault();
+                txtName.Text = patient.name;
+                dtpBirthday.Value = patient.date_of_birth;
+                txtEmail.Text = patient.email;
+                txtPhone.Text = patient.phone_number;
             }
-            if (txtPass.Text != txtPassConfirm.Text)
+        }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
-                MessageBox.Show("Паролі не збігаються!");
+                patient = db.PATIENT.Where(x => x.patient_id == ID).FirstOrDefault();
+                patient.name = txtName.Text;
+                patient.date_of_birth = dtpBirthday.Value;
+                patient.email = txtEmail.Text;
+                patient.phone_number = txtPhone.Text;
+                db.Entry(patient).State = System.Data.Entity.EntityState.Modified;
+                SaveDBChanges(db);
             }
-            else if (txtPass.Text != txtPassConfirm.Text)
-            {
-                MessageBox.Show("Паролі не збігаються!");
-            }
-            else
-            {
-                using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
-                {
-                    db.ACCOUNT.Where(x => x.account_id == AccountID).FirstOrDefault().password = txtPass.Text;
-                    SaveDBChanges(db);
-                    MessageBox.Show("Пароль вдало змінено!");
-                    Close();
-                }
-            }
+            MessageBox.Show("Зміни вдалі!");
+        }
+
+        private void btnCancelEdit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         void SaveDBChanges(CourseWorkAppointmentsEntities db)
@@ -74,11 +74,6 @@ namespace AppointmentsService
                     MessageBox.Show(str);
                 }
             }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

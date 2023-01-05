@@ -14,7 +14,7 @@ namespace AppointmentsService
     public partial class PatientWindow : Form
     {
         public PATIENT model;
-        public int ID;
+        public int AccountID;
         public bool PassAllowed = false;
         public PatientWindow()
         {
@@ -23,7 +23,7 @@ namespace AppointmentsService
 
         public PatientWindow(int id)
         {
-            ID = id;
+            AccountID = id;
             InitializeComponent();
             InitInfo();
             PopulateDoctorDGV();
@@ -41,7 +41,7 @@ namespace AppointmentsService
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
                 Cursor.Current = Cursors.WaitCursor;
-                model = db.PATIENT.Where(s => s.account_id == ID).FirstOrDefault<PATIENT>();
+                model = db.PATIENT.Where(s => s.account_id == AccountID).FirstOrDefault<PATIENT>();
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -192,10 +192,17 @@ namespace AppointmentsService
             if (PassAllowed)
             {
                 MessageBox.Show("Тепер Ви можете змінити пароль для акаунту!");
-                PasswordChanger pc = new PasswordChanger(ID);
+                PasswordChanger pc = new PasswordChanger(AccountID);
                 pc.ShowDialog();
             }
             PassAllowed = false;
+        }
+
+        private void btnEditProfile_Click(object sender, EventArgs e)
+        {
+            EditProfileInfo epi = new EditProfileInfo(model.patient_id);
+            epi.ShowDialog();
+            InitInfo();
         }
     }
 }
