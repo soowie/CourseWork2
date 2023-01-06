@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Validation;
+using System.Drawing.Printing;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;

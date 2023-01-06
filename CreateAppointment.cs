@@ -71,7 +71,7 @@ namespace AppointmentsService
                 //model.patients_count = distinctPatients;
                 //SaveDBChanges(db);
                 DEPARTMENT dep = db.DEPARTMENT.Where(s => s.department_id == model.department_id).FirstOrDefault();
-                lblContacts.Text = $"Адреса: {dep.address};\nПоверх: {dep.floor}; Відділ: {dep.name}; Кабінет №{model.cabinet_number};\nМобільний телефон: {model.phone_number}; Електронна пошта: {model.email}";
+                lblContacts.Text = $"Адреса: {dep.address};\nПоверх: {dep.floor}; Відділ: {dep.name}; Кабінет №{model.cabinet_number};\nМобільний телефон: {model.phone_number};\nЕлектронна пошта: {model.email}";
                 InitRatingBox();
                 Cursor.Current = Cursors.Default;
             }
@@ -136,16 +136,16 @@ namespace AppointmentsService
             }
             // отримали всі кнопки групбоксу
 
-            foreach (var button in buttons)
+            foreach (var button in buttons) // блочимо записи, час для яких вже вийшов
             {
                 if (new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, dateTimePicker1.Value.Day, Int32.Parse(button.Text.Split(':')[0]), Int32.Parse(button.Text.Split(':')[1]), 0) < DateTime.Now)
                 {
-                    button.Enabled = button.Checked = false;
+                    button.Enabled = button.Checked = false; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     button.BackColor = Color.Red;
                 }
             }
 
-            foreach (var item in ap) // айтем же кожен запис на обрану дату
+            foreach (var item in ap) // айтем це кожен запис на обрану дату
             {
                 string gotTime = item.start_time.ToString("HH:mm"); // обрати лише час з запису
                 var button = buttons.Where(s => s.Text == gotTime).FirstOrDefault(); // знайти копку саме з обраним часом
