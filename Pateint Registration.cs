@@ -73,9 +73,10 @@ namespace AppointmentsService
                     if (!db.ACCOUNT.Where(s => s.account_id == sameLoginPatient.account_id).FirstOrDefault<ACCOUNT>().is_deleted)
                     {
                         MessageBox.Show("Така пошта вже зайнята!");
+                        return;
                     }
                 }
-                else if (query == null || query.is_deleted)
+                if (query == null || query.is_deleted)
                 {
                     db.ACCOUNT.Add(modelAcc);
                     SaveDBChanges(db);
@@ -91,6 +92,7 @@ namespace AppointmentsService
                     Cursor.Current = Cursors.Default;
                     MessageBox.Show("Аккаунт під таким логіном вже інсує, оберіть інший логін!");
                 }
+
             }
         }
     }

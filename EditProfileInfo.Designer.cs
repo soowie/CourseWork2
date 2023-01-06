@@ -39,6 +39,7 @@
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.btnChange = new System.Windows.Forms.Button();
             this.btnCancelEdit = new System.Windows.Forms.Button();
+            this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label5
@@ -125,7 +126,7 @@
             this.btnChange.BackColor = System.Drawing.Color.Cornsilk;
             this.btnChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnChange.Location = new System.Drawing.Point(18, 219);
+            this.btnChange.Location = new System.Drawing.Point(18, 299);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(251, 35);
             this.btnChange.TabIndex = 16;
@@ -139,7 +140,7 @@
             this.btnCancelEdit.BackColor = System.Drawing.Color.Cornsilk;
             this.btnCancelEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCancelEdit.Location = new System.Drawing.Point(275, 219);
+            this.btnCancelEdit.Location = new System.Drawing.Point(275, 299);
             this.btnCancelEdit.Name = "btnCancelEdit";
             this.btnCancelEdit.Size = new System.Drawing.Size(183, 35);
             this.btnCancelEdit.TabIndex = 16;
@@ -147,12 +148,27 @@
             this.btnCancelEdit.UseVisualStyleBackColor = false;
             this.btnCancelEdit.Click += new System.EventHandler(this.btnCancelEdit_Click);
             // 
+            // btnDeleteAccount
+            // 
+            this.btnDeleteAccount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDeleteAccount.BackColor = System.Drawing.Color.Cornsilk;
+            this.btnDeleteAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDeleteAccount.Location = new System.Drawing.Point(94, 212);
+            this.btnDeleteAccount.Name = "btnDeleteAccount";
+            this.btnDeleteAccount.Size = new System.Drawing.Size(270, 35);
+            this.btnDeleteAccount.TabIndex = 16;
+            this.btnDeleteAccount.Text = "Видалити аккаунт";
+            this.btnDeleteAccount.UseVisualStyleBackColor = false;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
+            // 
             // EditProfileInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 272);
+            this.ClientSize = new System.Drawing.Size(470, 361);
             this.Controls.Add(this.dtpBirthday);
+            this.Controls.Add(this.btnDeleteAccount);
             this.Controls.Add(this.btnCancelEdit);
             this.Controls.Add(this.btnChange);
             this.Controls.Add(this.txtPhone);
@@ -182,5 +198,6 @@
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnCancelEdit;
+        private System.Windows.Forms.Button btnDeleteAccount;
     }
 }

@@ -204,7 +204,7 @@ namespace AppointmentsService
 
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
-            EditProfileInfo epi = new EditProfileInfo(model.patient_id);
+            EditProfileInfo epi = new EditProfileInfo(model.patient_id, this);
             epi.ShowDialog();
             InitInfo();
         }
