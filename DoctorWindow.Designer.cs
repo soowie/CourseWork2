@@ -36,6 +36,8 @@
             this.radioDone = new System.Windows.Forms.RadioButton();
             this.checkRating = new System.Windows.Forms.CheckBox();
             this.radioAll = new System.Windows.Forms.RadioButton();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,6 +141,23 @@
             this.radioAll.UseVisualStyleBackColor = true;
             this.radioAll.CheckedChanged += new System.EventHandler(this.radioAll_CheckedChanged);
             // 
+            // searchBox
+            // 
+            this.searchBox.Location = new System.Drawing.Point(282, 170);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(178, 22);
+            this.searchBox.TabIndex = 14;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(282, 147);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(163, 16);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Пошук пацієнта за ім\'ям";
+            // 
             // DoctorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -146,6 +165,8 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1170, 551);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.checkRating);
             this.Controls.Add(this.radioDone);
             this.Controls.Add(this.radioAll);
@@ -174,5 +195,7 @@
         private System.Windows.Forms.RadioButton radioDone;
         private System.Windows.Forms.CheckBox checkRating;
         private System.Windows.Forms.RadioButton radioAll;
+        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Label label1;
     }
 }

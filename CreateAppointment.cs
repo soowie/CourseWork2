@@ -12,12 +12,15 @@ using System.Windows.Media;
 using RadioButton = System.Windows.Forms.RadioButton;
 using Color = System.Drawing.Color;
 using Brushes = System.Drawing.Brushes;
+using System.Security.Cryptography;
+using System.Data.Entity.Infrastructure;
 
 namespace AppointmentsService
 {
     public partial class CreateAppointment : Form
     {
         DOCTOR model = new DOCTOR();
+        APPOINTMENT apToPrint = new APPOINTMENT();
         int PatientID;
         public CreateAppointment()
         {
@@ -226,6 +229,7 @@ namespace AppointmentsService
                 db.APPOINTMENT.Add(apmodel);
                 db.PATIENT.SingleOrDefault(b => b.patient_id == apmodel.patient_id).appointments_overtime++; // increase appointment counter
                 SaveDBChanges(db);
+                apToPrint = apmodel;
                 Cursor.Current = Cursors.Default;
                 if (MessageBox.Show("Запис створено. Чи бажаєте ви роздрукувавти талон?", "Друк талону про запис", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
@@ -237,11 +241,29 @@ namespace AppointmentsService
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-            // Set the font and draw the text
+            DOCTOR model;
+            DEPARTMENT dep;
+            PATIENT patient;
+            int appCount;
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                model = db.DOCTOR.SingleOrDefault(b => b.doctor_id == apToPrint.doctor_id);
+                appCount = db.APPOINTMENT.Where(s => s.doctor_id == model.doctor_id).Count();
+                patient = db.PATIENT.SingleOrDefault(b => b.patient_id == apToPrint.patient_id);
+                dep = db.DEPARTMENT.SingleOrDefault(b => b.department_id == model.department_id);
+            }
+                
+            string info = $"Лікар: {model.name}, {model.specialization}\nПошта: {model.email} , телефон: {model.phone_number}";
+            string patInfo = $"{patient.name}\nВсього записів - {patient.appointments_overtime}\nПошта: {patient.email} , телефон: {patient.phone_number}";
+            string appInfo = $"Запис створенo на дату {apToPrint.start_time}.\nВідділ: {dep.name}, {dep.address}\nПоверх {dep.floor}, кабінет № {model.cabinet_number}\n\n{info}";
+            Font font1 = new Font("Arial", 14, FontStyle.Bold);
             Font font = new Font("Arial", 12);
-            e.Graphics.DrawString("Info!", font, Brushes.Black, 50, 50);
-            e.Graphics.DrawString("LOOOOOl dsof]ksdoisaovdsaovhduhdapsovjn[uhpvciudsvnshdvbhsvnhbsudavbadsnvouhdafbpvisabdhvousadbpvnisadovbhuyasdbvhpisodbavusdabvps v\ncccccccccccc", font, Brushes.Black, 50, 100);
-            e.Graphics.DrawString("xddd\n\nnot me", font, Brushes.Black, 50, 150);
+            Font font2 = new Font("Segoe UI", 8, FontStyle.Bold);
+            e.Graphics.DrawString($"Інформація талону №{apToPrint.appointment_id}", font1, Brushes.Black, 250, 50);
+            e.Graphics.DrawString(appInfo, font, Brushes.Black, 50, 100);
+            e.Graphics.DrawString(patInfo, font, Brushes.Black, 50, 270);
+            e.Graphics.DrawString($"Лікарня \"Okhtyrka's Regional Hospital (ORH)\"", font, Brushes.Black, 220, 400);
+            e.Graphics.DrawString($"Дата генерації талону: {DateTime.Now}", font2, Brushes.Black, 450, 430);
         }
 
         private void PrintInfo()
@@ -314,12 +336,12 @@ namespace AppointmentsService
                     db.PATIENT.SingleOrDefault(b => b.patient_id == apmodel.patient_id).appointments_overtime++; // increase appointment counter
                     SaveDBChanges(db);
                     Cursor.Current = Cursors.Default;
-                    if (MessageBox.Show("Запис створено. Чи бажаєте ви роздрукувати талон?", "Друк талону про запис", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    apToPrint = apmodel;
+                    if (MessageBox.Show($"Запис створено, ваш час: {foundTime}. Чи бажаєте ви роздрукувати талон?", "Друк талону про запис", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         PrintInfo();
                     }
                     GetAppointmentsForDate();
-                    MessageBox.Show($"Done! Your time is {foundTime}");
                 }
 
             }
