@@ -36,8 +36,7 @@
             this.radioDone = new System.Windows.Forms.RadioButton();
             this.checkRating = new System.Windows.Forms.CheckBox();
             this.radioAll = new System.Windows.Forms.RadioButton();
-            this.searchBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,10 +48,11 @@
             this.btnPrintPlan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnPrintPlan.Location = new System.Drawing.Point(129, 22);
             this.btnPrintPlan.Name = "btnPrintPlan";
-            this.btnPrintPlan.Size = new System.Drawing.Size(227, 35);
+            this.btnPrintPlan.Size = new System.Drawing.Size(286, 35);
             this.btnPrintPlan.TabIndex = 8;
-            this.btnPrintPlan.Text = "Друкувати записи";
+            this.btnPrintPlan.Text = "Друкувати обрані записи";
             this.btnPrintPlan.UseVisualStyleBackColor = false;
+            this.btnPrintPlan.Click += new System.EventHandler(this.btnPrintPlan_Click);
             // 
             // btnLogout
             // 
@@ -72,7 +72,7 @@
             // 
             this.labelPatientInfo.AutoSize = true;
             this.labelPatientInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPatientInfo.Location = new System.Drawing.Point(373, 22);
+            this.labelPatientInfo.Location = new System.Drawing.Point(432, 22);
             this.labelPatientInfo.Name = "labelPatientInfo";
             this.labelPatientInfo.Size = new System.Drawing.Size(327, 58);
             this.labelPatientInfo.TabIndex = 7;
@@ -97,7 +97,7 @@
             // radioPlanned
             // 
             this.radioPlanned.AutoSize = true;
-            this.radioPlanned.Location = new System.Drawing.Point(22, 144);
+            this.radioPlanned.Location = new System.Drawing.Point(129, 170);
             this.radioPlanned.Name = "radioPlanned";
             this.radioPlanned.Size = new System.Drawing.Size(148, 20);
             this.radioPlanned.TabIndex = 12;
@@ -108,7 +108,7 @@
             // radioDone
             // 
             this.radioDone.AutoSize = true;
-            this.radioDone.Location = new System.Drawing.Point(22, 170);
+            this.radioDone.Location = new System.Drawing.Point(293, 170);
             this.radioDone.Name = "radioDone";
             this.radioDone.Size = new System.Drawing.Size(122, 20);
             this.radioDone.TabIndex = 12;
@@ -120,7 +120,7 @@
             // checkRating
             // 
             this.checkRating.AutoSize = true;
-            this.checkRating.Location = new System.Drawing.Point(22, 92);
+            this.checkRating.Location = new System.Drawing.Point(479, 170);
             this.checkRating.Name = "checkRating";
             this.checkRating.Size = new System.Drawing.Size(111, 20);
             this.checkRating.TabIndex = 13;
@@ -132,7 +132,7 @@
             // 
             this.radioAll.AutoSize = true;
             this.radioAll.Checked = true;
-            this.radioAll.Location = new System.Drawing.Point(22, 118);
+            this.radioAll.Location = new System.Drawing.Point(22, 170);
             this.radioAll.Name = "radioAll";
             this.radioAll.Size = new System.Drawing.Size(97, 20);
             this.radioAll.TabIndex = 12;
@@ -141,22 +141,9 @@
             this.radioAll.UseVisualStyleBackColor = true;
             this.radioAll.CheckedChanged += new System.EventHandler(this.radioAll_CheckedChanged);
             // 
-            // searchBox
+            // printDocument1
             // 
-            this.searchBox.Location = new System.Drawing.Point(282, 170);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(178, 22);
-            this.searchBox.TabIndex = 14;
-            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(282, 147);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 16);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Пошук пацієнта за ім\'ям";
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // DoctorWindow
             // 
@@ -165,8 +152,6 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1170, 551);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.checkRating);
             this.Controls.Add(this.radioDone);
             this.Controls.Add(this.radioAll);
@@ -195,7 +180,6 @@
         private System.Windows.Forms.RadioButton radioDone;
         private System.Windows.Forms.CheckBox checkRating;
         private System.Windows.Forms.RadioButton radioAll;
-        private System.Windows.Forms.TextBox searchBox;
-        private System.Windows.Forms.Label label1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

@@ -61,8 +61,8 @@ namespace AppointmentsService
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
                 var query = (from apo in db.APPOINTMENT
-                             where apo.patient_id == model.patient_id
                              join doc in db.DOCTOR on apo.doctor_id equals doc.doctor_id
+                             where apo.patient_id == model.patient_id
                              select new
                              {
                                  appointment_id = apo.appointment_id,
@@ -86,6 +86,8 @@ namespace AppointmentsService
                     InitRating(item);
                 }
                 var query = (from doc in db.DOCTOR
+                             join acc in db.ACCOUNT on doc.account_id equals acc.account_id
+                             where acc.is_deleted == false
                              select new
                              {
                                  doctor_id = doc.doctor_id,
@@ -205,6 +207,23 @@ namespace AppointmentsService
             EditProfileInfo epi = new EditProfileInfo(model.patient_id);
             epi.ShowDialog();
             InitInfo();
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvDoctors.Rows)
+            {
+                dgvDoctors.CurrentCell = null;
+                if (row.Cells["name"].Value != null &&
+                    row.Cells["name"].Value.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                {
+                    row.Visible = true;
+                }
+                else
+                {
+                    row.Visible = false;
+                }
+            }
         }
     }
 }

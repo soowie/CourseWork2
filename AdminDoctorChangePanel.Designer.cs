@@ -31,18 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
-            this.doctor_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DoctorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.specialization = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Info = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.experience = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patients_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cabinet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.account_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSave = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,6 +56,18 @@
             this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.txtDoctorCabinet = new System.Windows.Forms.NumericUpDown();
             this.txtDoctorExperience = new System.Windows.Forms.NumericUpDown();
+            this.doctor_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DoctorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.specialization = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Info = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.experience = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patients_count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cabinet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.account_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctorCabinet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctorExperience)).BeginInit();
@@ -121,115 +121,6 @@
             this.dgvCustomer.Size = new System.Drawing.Size(457, 441);
             this.dgvCustomer.TabIndex = 2;
             this.dgvCustomer.DoubleClick += new System.EventHandler(this.dgvCustomer_DoubleClick);
-            // 
-            // doctor_id
-            // 
-            this.doctor_id.DataPropertyName = "doctor_id";
-            this.doctor_id.HeaderText = "ІД";
-            this.doctor_id.MinimumWidth = 6;
-            this.doctor_id.Name = "doctor_id";
-            this.doctor_id.ReadOnly = true;
-            this.doctor_id.Visible = false;
-            this.doctor_id.Width = 125;
-            // 
-            // DoctorName
-            // 
-            this.DoctorName.DataPropertyName = "name";
-            this.DoctorName.HeaderText = "П. І. Б.";
-            this.DoctorName.MinimumWidth = 6;
-            this.DoctorName.Name = "DoctorName";
-            this.DoctorName.ReadOnly = true;
-            this.DoctorName.Width = 125;
-            // 
-            // specialization
-            // 
-            this.specialization.DataPropertyName = "specialization";
-            this.specialization.HeaderText = "Спеціальність";
-            this.specialization.MinimumWidth = 6;
-            this.specialization.Name = "specialization";
-            this.specialization.ReadOnly = true;
-            this.specialization.Width = 125;
-            // 
-            // Info
-            // 
-            this.Info.DataPropertyName = "information";
-            this.Info.HeaderText = "Інформація";
-            this.Info.MinimumWidth = 6;
-            this.Info.Name = "Info";
-            this.Info.ReadOnly = true;
-            this.Info.Width = 125;
-            // 
-            // email
-            // 
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "Електронна Пошта";
-            this.email.MinimumWidth = 6;
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Width = 125;
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "phone_number";
-            this.Phone.HeaderText = "Номер телефону";
-            this.Phone.MinimumWidth = 6;
-            this.Phone.Name = "Phone";
-            this.Phone.ReadOnly = true;
-            this.Phone.Width = 125;
-            // 
-            // experience
-            // 
-            this.experience.DataPropertyName = "experience";
-            this.experience.HeaderText = "Років досвіду";
-            this.experience.MinimumWidth = 6;
-            this.experience.Name = "experience";
-            this.experience.ReadOnly = true;
-            this.experience.Width = 125;
-            // 
-            // patients_count
-            // 
-            this.patients_count.DataPropertyName = "patients_count";
-            this.patients_count.HeaderText = "Кількість пацієнтів";
-            this.patients_count.MinimumWidth = 6;
-            this.patients_count.Name = "patients_count";
-            this.patients_count.ReadOnly = true;
-            this.patients_count.Width = 125;
-            // 
-            // Cabinet
-            // 
-            this.Cabinet.DataPropertyName = "cabinet_number";
-            this.Cabinet.HeaderText = "Номер кабінету";
-            this.Cabinet.MinimumWidth = 6;
-            this.Cabinet.Name = "Cabinet";
-            this.Cabinet.ReadOnly = true;
-            this.Cabinet.Width = 125;
-            // 
-            // rating
-            // 
-            this.rating.DataPropertyName = "rating";
-            this.rating.HeaderText = "Рейтинг";
-            this.rating.MinimumWidth = 6;
-            this.rating.Name = "rating";
-            this.rating.ReadOnly = true;
-            this.rating.Width = 125;
-            // 
-            // DepartmentID
-            // 
-            this.DepartmentID.DataPropertyName = "department_id";
-            this.DepartmentID.HeaderText = "Номер відділу";
-            this.DepartmentID.MinimumWidth = 6;
-            this.DepartmentID.Name = "DepartmentID";
-            this.DepartmentID.ReadOnly = true;
-            this.DepartmentID.Width = 125;
-            // 
-            // account_id
-            // 
-            this.account_id.DataPropertyName = "account_id";
-            this.account_id.HeaderText = "Номер аккаунту";
-            this.account_id.MinimumWidth = 6;
-            this.account_id.Name = "account_id";
-            this.account_id.ReadOnly = true;
-            this.account_id.Width = 125;
             // 
             // btnSave
             // 
@@ -549,6 +440,115 @@
             this.txtDoctorExperience.Size = new System.Drawing.Size(172, 22);
             this.txtDoctorExperience.TabIndex = 8;
             // 
+            // doctor_id
+            // 
+            this.doctor_id.DataPropertyName = "doctor_id";
+            this.doctor_id.HeaderText = "ІД";
+            this.doctor_id.MinimumWidth = 6;
+            this.doctor_id.Name = "doctor_id";
+            this.doctor_id.ReadOnly = true;
+            this.doctor_id.Visible = false;
+            this.doctor_id.Width = 125;
+            // 
+            // DoctorName
+            // 
+            this.DoctorName.DataPropertyName = "name";
+            this.DoctorName.HeaderText = "П. І. Б.";
+            this.DoctorName.MinimumWidth = 6;
+            this.DoctorName.Name = "DoctorName";
+            this.DoctorName.ReadOnly = true;
+            this.DoctorName.Width = 125;
+            // 
+            // specialization
+            // 
+            this.specialization.DataPropertyName = "specialization";
+            this.specialization.HeaderText = "Спеціальність";
+            this.specialization.MinimumWidth = 6;
+            this.specialization.Name = "specialization";
+            this.specialization.ReadOnly = true;
+            this.specialization.Width = 125;
+            // 
+            // Info
+            // 
+            this.Info.DataPropertyName = "information";
+            this.Info.HeaderText = "Інформація";
+            this.Info.MinimumWidth = 6;
+            this.Info.Name = "Info";
+            this.Info.ReadOnly = true;
+            this.Info.Width = 125;
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "email";
+            this.email.HeaderText = "Електронна Пошта";
+            this.email.MinimumWidth = 6;
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Width = 125;
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "phone_number";
+            this.Phone.HeaderText = "Номер телефону";
+            this.Phone.MinimumWidth = 6;
+            this.Phone.Name = "Phone";
+            this.Phone.ReadOnly = true;
+            this.Phone.Width = 125;
+            // 
+            // experience
+            // 
+            this.experience.DataPropertyName = "experience";
+            this.experience.HeaderText = "Років досвіду";
+            this.experience.MinimumWidth = 6;
+            this.experience.Name = "experience";
+            this.experience.ReadOnly = true;
+            this.experience.Width = 125;
+            // 
+            // patients_count
+            // 
+            this.patients_count.DataPropertyName = "patients_count";
+            this.patients_count.HeaderText = "Кількість пацієнтів";
+            this.patients_count.MinimumWidth = 6;
+            this.patients_count.Name = "patients_count";
+            this.patients_count.ReadOnly = true;
+            this.patients_count.Width = 125;
+            // 
+            // Cabinet
+            // 
+            this.Cabinet.DataPropertyName = "cabinet_number";
+            this.Cabinet.HeaderText = "Номер кабінету";
+            this.Cabinet.MinimumWidth = 6;
+            this.Cabinet.Name = "Cabinet";
+            this.Cabinet.ReadOnly = true;
+            this.Cabinet.Width = 125;
+            // 
+            // rating
+            // 
+            this.rating.DataPropertyName = "rating";
+            this.rating.HeaderText = "Рейтинг";
+            this.rating.MinimumWidth = 6;
+            this.rating.Name = "rating";
+            this.rating.ReadOnly = true;
+            this.rating.Width = 125;
+            // 
+            // DepartmentID
+            // 
+            this.DepartmentID.DataPropertyName = "department_id";
+            this.DepartmentID.HeaderText = "Номер відділу";
+            this.DepartmentID.MinimumWidth = 6;
+            this.DepartmentID.Name = "DepartmentID";
+            this.DepartmentID.ReadOnly = true;
+            this.DepartmentID.Width = 125;
+            // 
+            // account_id
+            // 
+            this.account_id.DataPropertyName = "account_id";
+            this.account_id.HeaderText = "Номер аккаунту";
+            this.account_id.MinimumWidth = 6;
+            this.account_id.Name = "account_id";
+            this.account_id.ReadOnly = true;
+            this.account_id.Width = 125;
+            // 
             // AdminDoctorChangePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -615,6 +615,14 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox txtDoctorPass;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGoDepartment;
+        private System.Windows.Forms.ComboBox сmbSpecialization;
+        private System.Windows.Forms.ComboBox cmbDepartment;
+        private System.Windows.Forms.NumericUpDown txtDoctorCabinet;
+        private System.Windows.Forms.NumericUpDown txtDoctorExperience;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctor_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DoctorName;
         private System.Windows.Forms.DataGridViewTextBoxColumn specialization;
@@ -627,14 +635,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rating;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn account_id;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnGoDepartment;
-        private System.Windows.Forms.ComboBox сmbSpecialization;
-        private System.Windows.Forms.ComboBox cmbDepartment;
-        private System.Windows.Forms.NumericUpDown txtDoctorCabinet;
-        private System.Windows.Forms.NumericUpDown txtDoctorExperience;
     }
 }
 

@@ -129,7 +129,7 @@ namespace AppointmentsService
             dgvCustomer.AutoGenerateColumns = false;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
-                dgvCustomer.DataSource = db.DOCTOR.ToList<DOCTOR>();
+                dgvCustomer.DataSource = db.DOCTOR.Where(x => db.ACCOUNT.Where(z => z.account_id == x.account_id).FirstOrDefault().is_deleted == false).ToList<DOCTOR>();
             }
         }
 
@@ -164,18 +164,19 @@ namespace AppointmentsService
             {
                 using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
                 {
-                    var entry = db.Entry(model);
+                    //var entry = db.Entry(model);
                     var entryAcc = db.Entry(modelAcc);
-                    if (entry.State == System.Data.Entity.EntityState.Detached)
-                    {
-                        db.DOCTOR.Attach(model);
-                    }
+                    //if (entry.State == System.Data.Entity.EntityState.Detached)
+                    //{
+                    //    db.DOCTOR.Attach(model);
+                    //}
                     if (entryAcc.State == System.Data.Entity.EntityState.Detached)
                     {
                         db.ACCOUNT.Attach(modelAcc);
                     }
-                    db.DOCTOR.Remove(model);
-                    db.ACCOUNT.Remove(modelAcc);
+                    //db.DOCTOR.Remove(model);
+                    //db.ACCOUNT.Remove(modelAcc);
+                    modelAcc.is_deleted = true;
                     SaveDBChanges(db);
                     PopulateDoctorDGV();
                     ClearTextBoxes();

@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvAppointment = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.searchBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).BeginInit();
             this.SuspendLayout();
@@ -140,12 +141,21 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Ваші записи (подвійний клік,\r\nщоб залишити відгук про лікаря)";
             // 
+            // searchBox
+            // 
+            this.searchBox.Location = new System.Drawing.Point(1057, 113);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(100, 22);
+            this.searchBox.TabIndex = 9;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            // 
             // PatientWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1307, 569);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvAppointment);
@@ -174,5 +184,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvAppointment;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox searchBox;
     }
 }
