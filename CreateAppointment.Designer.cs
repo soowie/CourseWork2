@@ -441,7 +441,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.Orange;
-            this.panel1.Location = new System.Drawing.Point(547, 281);
+            this.panel1.Location = new System.Drawing.Point(547, 298);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(20, 20);
             this.panel1.TabIndex = 9;
@@ -450,7 +450,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(574, 284);
+            this.label1.Location = new System.Drawing.Point(574, 301);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 48);
             this.label1.TabIndex = 10;
@@ -471,15 +471,15 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(574, 244);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 32);
+            this.label2.Size = new System.Drawing.Size(117, 48);
             this.label2.TabIndex = 10;
-            this.label2.Text = "На цю дату\r\nвже існує запис";
+            this.label2.Text = "На цю дату\r\nвже існує запис\r\nабо дата минула\r\n";
             // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(544, 342);
+            this.label6.Location = new System.Drawing.Point(544, 359);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(155, 48);
             this.label6.TabIndex = 10;
@@ -489,7 +489,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(544, 398);
+            this.label7.Location = new System.Drawing.Point(544, 415);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(163, 48);
             this.label7.TabIndex = 10;

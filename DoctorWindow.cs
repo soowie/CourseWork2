@@ -79,6 +79,13 @@ namespace AppointmentsService
                              }).ToList();
                 dgvAppointment.DataSource = query;
                 dgvAppointment.Columns[0].Visible = false;
+                dgvAppointment.Columns[1].HeaderText = "Ім'я пацієнта";
+                dgvAppointment.Columns[2].HeaderText = "День народження пацієнта";
+                dgvAppointment.Columns[3].HeaderText = "Телефон";
+                dgvAppointment.Columns[4].HeaderText = "Пошта";
+                dgvAppointment.Columns[5].HeaderText = "Дата запису";
+                dgvAppointment.Columns[6].HeaderText = "Рейтинг";
+                dgvAppointment.Columns[7].HeaderText = "Статус запису";
                 dgvAppointment.Refresh();
             }
         }
@@ -125,6 +132,14 @@ namespace AppointmentsService
                              }).ToList();
                 dgvAppointment.DataSource = query;
                 dgvAppointment.Columns[0].Visible = false;
+
+                dgvAppointment.Columns[1].HeaderText = "Ім'я пацієнта";
+                dgvAppointment.Columns[2].HeaderText = "День народження пацієнта";
+                dgvAppointment.Columns[3].HeaderText = "Телефон";
+                dgvAppointment.Columns[4].HeaderText = "Пошта";
+                dgvAppointment.Columns[5].HeaderText = "Дата запису";
+                dgvAppointment.Columns[6].HeaderText = "Рейтинг";
+                dgvAppointment.Columns[7].HeaderText = "Статус запису";
                 dgvAppointment.Refresh();
             }
         }
@@ -151,6 +166,13 @@ namespace AppointmentsService
                              }).ToList();
                 dgvAppointment.DataSource = query;
                 dgvAppointment.Columns[0].Visible = false;
+                dgvAppointment.Columns[1].HeaderText = "Ім'я пацієнта";
+                dgvAppointment.Columns[2].HeaderText = "День народження пацієнта";
+                dgvAppointment.Columns[3].HeaderText = "Телефон";
+                dgvAppointment.Columns[4].HeaderText = "Пошта";
+                dgvAppointment.Columns[5].HeaderText = "Дата запису";
+                dgvAppointment.Columns[6].HeaderText = "Рейтинг";
+                dgvAppointment.Columns[7].HeaderText = "Статус запису";
                 dgvAppointment.Refresh();
             }
         }

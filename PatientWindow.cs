@@ -10,6 +10,8 @@ using System.Net.Mail;
 using System.Reflection.Emit;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Collections;
 
 namespace AppointmentsService
 {
@@ -31,6 +33,8 @@ namespace AppointmentsService
             PopulateDoctorDGV();
             PopulateAppointmentDGV();
             dgvDoctors.Refresh();
+            cmbDepartment.SelectedIndex = 0;
+            btnPassChange.Hide();
         }
 
         void InitInfo()
@@ -55,6 +59,262 @@ namespace AppointmentsService
             this.Close();
         }
 
+        void SortTableRatingAsc()
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                foreach (var item in db.DOCTOR)
+                {
+                    InitRating(item);
+                }
+                var query = (from doc in db.DOCTOR
+                             join acc in db.ACCOUNT on doc.account_id equals acc.account_id
+                             where acc.is_deleted == false
+                             orderby doc.rating ascending
+                             select new
+                             {
+                                 doctor_id = doc.doctor_id,
+                                 name = doc.name,
+                                 specialization = doc.specialization,
+                                 rating = doc.rating,
+                                 experience = doc.experience,
+                                 patients_count = doc.patients_count
+                             }).ToList();
+                dgvDoctors.DataSource = query;
+                dgvDoctors.Columns[0].Visible = false;
+                dgvDoctors.Columns[1].HeaderText = "Ім'я доктора";
+                dgvDoctors.Columns[2].HeaderText = "Спеціальність";
+                dgvDoctors.Columns[3].HeaderText = "Рейтинг";
+                dgvDoctors.Columns[4].HeaderText = "Досвід";
+                dgvDoctors.Columns[5].HeaderText = "Кількість обслугованих пацієнтів";
+                dgvDoctors.Refresh();
+            }
+        }
+
+        void SortTableRatingDesc()
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                foreach (var item in db.DOCTOR)
+                {
+                    InitRating(item);
+                }
+                var query = (from doc in db.DOCTOR
+                             join acc in db.ACCOUNT on doc.account_id equals acc.account_id
+                             where acc.is_deleted == false
+                             orderby doc.rating descending
+                             select new
+                             {
+                                 doctor_id = doc.doctor_id,
+                                 name = doc.name,
+                                 specialization = doc.specialization,
+                                 rating = doc.rating,
+                                 experience = doc.experience,
+                                 patients_count = doc.patients_count
+                             }).ToList();
+                dgvDoctors.DataSource = query;
+                dgvDoctors.Columns[0].Visible = false;
+                dgvDoctors.Columns[1].HeaderText = "Ім'я доктора";
+                dgvDoctors.Columns[2].HeaderText = "Спеціальність";
+                dgvDoctors.Columns[3].HeaderText = "Рейтинг";
+                dgvDoctors.Columns[4].HeaderText = "Досвід";
+                dgvDoctors.Columns[5].HeaderText = "Кількість обслугованих пацієнтів";
+                dgvDoctors.Refresh();
+            }
+        }
+
+        void SortTableExperienceAsc()
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                foreach (var item in db.DOCTOR)
+                {
+                    InitRating(item);
+                }
+                var query = (from doc in db.DOCTOR
+                             join acc in db.ACCOUNT on doc.account_id equals acc.account_id
+                             where acc.is_deleted == false
+                             orderby doc.experience ascending
+                             select new
+                             {
+                                 doctor_id = doc.doctor_id,
+                                 name = doc.name,
+                                 specialization = doc.specialization,
+                                 rating = doc.rating,
+                                 experience = doc.experience,
+                                 patients_count = doc.patients_count
+                             }).ToList();
+                dgvDoctors.DataSource = query;
+                dgvDoctors.Columns[0].Visible = false;
+                dgvDoctors.Columns[1].HeaderText = "Ім'я доктора";
+                dgvDoctors.Columns[2].HeaderText = "Спеціальність";
+                dgvDoctors.Columns[3].HeaderText = "Рейтинг";
+                dgvDoctors.Columns[4].HeaderText = "Досвід";
+                dgvDoctors.Columns[5].HeaderText = "Кількість обслугованих пацієнтів";
+                dgvDoctors.Refresh();
+            }
+        }
+
+        void SortTableExperienceDesc()
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                foreach (var item in db.DOCTOR)
+                {
+                    InitRating(item);
+                }
+                var query = (from doc in db.DOCTOR
+                             join acc in db.ACCOUNT on doc.account_id equals acc.account_id
+                             where acc.is_deleted == false
+                             orderby doc.experience descending
+                             select new
+                             {
+                                 doctor_id = doc.doctor_id,
+                                 name = doc.name,
+                                 specialization = doc.specialization,
+                                 rating = doc.rating,
+                                 experience = doc.experience,
+                                 patients_count = doc.patients_count
+                             }).ToList();
+                dgvDoctors.DataSource = query;
+                dgvDoctors.Columns[0].Visible = false;
+                dgvDoctors.Columns[1].HeaderText = "Ім'я доктора";
+                dgvDoctors.Columns[2].HeaderText = "Спеціальність";
+                dgvDoctors.Columns[3].HeaderText = "Рейтинг";
+                dgvDoctors.Columns[4].HeaderText = "Досвід";
+                dgvDoctors.Columns[5].HeaderText = "Кількість обслугованих пацієнтів";
+                dgvDoctors.Refresh();
+            }
+        }
+
+        void SortTablePatientsAsc()
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                foreach (var item in db.DOCTOR)
+                {
+                    InitRating(item);
+                }
+                var query = (from doc in db.DOCTOR
+                             join acc in db.ACCOUNT on doc.account_id equals acc.account_id
+                             where acc.is_deleted == false
+                             orderby doc.patients_count ascending
+                             select new
+                             {
+                                 doctor_id = doc.doctor_id,
+                                 name = doc.name,
+                                 specialization = doc.specialization,
+                                 rating = doc.rating,
+                                 experience = doc.experience,
+                                 patients_count = doc.patients_count
+                             }).ToList();
+                dgvDoctors.DataSource = query;
+                dgvDoctors.Columns[0].Visible = false;
+                dgvDoctors.Columns[1].HeaderText = "Ім'я доктора";
+                dgvDoctors.Columns[2].HeaderText = "Спеціальність";
+                dgvDoctors.Columns[3].HeaderText = "Рейтинг";
+                dgvDoctors.Columns[4].HeaderText = "Досвід";
+                dgvDoctors.Columns[5].HeaderText = "Кількість обслугованих пацієнтів";
+                dgvDoctors.Refresh();
+            }
+        }
+
+        void SortTablePatientsDesc()
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                foreach (var item in db.DOCTOR)
+                {
+                    InitRating(item);
+                }
+                var query = (from doc in db.DOCTOR
+                             join acc in db.ACCOUNT on doc.account_id equals acc.account_id
+                             where acc.is_deleted == false
+                             orderby doc.patients_count descending
+                             select new
+                             {
+                                 doctor_id = doc.doctor_id,
+                                 name = doc.name,
+                                 specialization = doc.specialization,
+                                 rating = doc.rating,
+                                 experience = doc.experience,
+                                 patients_count = doc.patients_count
+                             }).ToList();
+                dgvDoctors.DataSource = query;
+                dgvDoctors.Columns[0].Visible = false;
+                dgvDoctors.Columns[1].HeaderText = "Ім'я доктора";
+                dgvDoctors.Columns[2].HeaderText = "Спеціальність";
+                dgvDoctors.Columns[3].HeaderText = "Рейтинг";
+                dgvDoctors.Columns[4].HeaderText = "Досвід";
+                dgvDoctors.Columns[5].HeaderText = "Кількість обслугованих пацієнтів";
+                dgvDoctors.Refresh();
+            }
+        }
+
+        void SortTableNameAsc()
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                foreach (var item in db.DOCTOR)
+                {
+                    InitRating(item);
+                }
+                var query = (from doc in db.DOCTOR
+                             join acc in db.ACCOUNT on doc.account_id equals acc.account_id
+                             where acc.is_deleted == false
+                             orderby doc.name ascending
+                             select new
+                             {
+                                 doctor_id = doc.doctor_id,
+                                 name = doc.name,
+                                 specialization = doc.specialization,
+                                 rating = doc.rating,
+                                 experience = doc.experience,
+                                 patients_count = doc.patients_count
+                             }).ToList();
+                dgvDoctors.DataSource = query;
+                dgvDoctors.Columns[0].Visible = false;
+                dgvDoctors.Columns[1].HeaderText = "Ім'я доктора";
+                dgvDoctors.Columns[2].HeaderText = "Спеціальність";
+                dgvDoctors.Columns[3].HeaderText = "Рейтинг";
+                dgvDoctors.Columns[4].HeaderText = "Досвід";
+                dgvDoctors.Columns[5].HeaderText = "Кількість обслугованих пацієнтів";
+                dgvDoctors.Refresh();
+            }
+        }
+
+        void SortTableNameDesc()
+        {
+            using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+            {
+                foreach (var item in db.DOCTOR)
+                {
+                    InitRating(item);
+                }
+                var query = (from doc in db.DOCTOR
+                             join acc in db.ACCOUNT on doc.account_id equals acc.account_id
+                             where acc.is_deleted == false
+                             orderby doc.name descending
+                             select new
+                             {
+                                 doctor_id = doc.doctor_id,
+                                 name = doc.name,
+                                 specialization = doc.specialization,
+                                 rating = doc.rating,
+                                 experience = doc.experience,
+                                 patients_count = doc.patients_count
+                             }).ToList();
+                dgvDoctors.DataSource = query;
+                dgvDoctors.Columns[0].Visible = false;
+                dgvDoctors.Columns[1].HeaderText = "Ім'я доктора";
+                dgvDoctors.Columns[2].HeaderText = "Спеціальність";
+                dgvDoctors.Columns[3].HeaderText = "Рейтинг";
+                dgvDoctors.Columns[4].HeaderText = "Досвід";
+                dgvDoctors.Columns[5].HeaderText = "Кількість обслугованих пацієнтів";
+                dgvDoctors.Refresh();
+            }
+        }
+
         void PopulateAppointmentDGV()
         {
             dgvAppointment.AutoGenerateColumns = true;
@@ -72,13 +332,15 @@ namespace AppointmentsService
                              }).ToList();
                 dgvAppointment.DataSource = query;
                 dgvAppointment.Columns[0].Visible = false;
+                dgvAppointment.Columns[1].HeaderText = "Ім'я доктора";
+                dgvAppointment.Columns[2].HeaderText = "Дата запису";
+                dgvAppointment.Columns[3].HeaderText = "Ваша оцінка";
                 dgvAppointment.Refresh();
             }
         }
 
         void PopulateDoctorDGV()
         {
-            //dgvDoctors.AutoGenerateColumns = false;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
                 foreach (var item in db.DOCTOR)
@@ -99,6 +361,11 @@ namespace AppointmentsService
                              }).ToList();
                 dgvDoctors.DataSource = query;
                 dgvDoctors.Columns[0].Visible = false;
+                dgvDoctors.Columns[1].HeaderText = "Ім'я доктора";
+                dgvDoctors.Columns[2].HeaderText = "Спеціальність";
+                dgvDoctors.Columns[3].HeaderText = "Рейтинг";
+                dgvDoctors.Columns[4].HeaderText = "Досвід";
+                dgvDoctors.Columns[5].HeaderText = "Кількість обслугованих пацієнтів";
                 dgvDoctors.Refresh();
             }
         }
@@ -225,5 +492,84 @@ namespace AppointmentsService
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            TopWindow tw = new TopWindow(1, model.patient_id);
+            tw.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TopWindow tw = new TopWindow(2, model.patient_id);
+            tw.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            TopWindow tw = new TopWindow(3, model.patient_id);
+            tw.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            TopWindow tw = new TopWindow(4, model.patient_id);
+            tw.ShowDialog();
+        }
+
+        private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDepartment.SelectedItem.ToString() == "Рейтингом")
+            {
+                if (checkBox1.Checked)
+                {
+                    SortTableRatingDesc();
+                }
+                else
+                {
+                    SortTableRatingAsc();
+                }
+            }
+            else if (cmbDepartment.SelectedItem.ToString() == "Досвідом")
+            {
+                if (checkBox1.Checked)
+                {
+                    SortTableExperienceDesc();
+                }
+                else
+                {
+                    SortTableExperienceAsc();
+                }
+            }
+            else if (cmbDepartment.SelectedItem.ToString() == "Кількістю пацієнтів")
+            {
+                if (checkBox1.Checked)
+                {
+                    SortTablePatientsDesc();
+                }
+                else
+                {
+                    SortTablePatientsAsc();
+                }
+            }
+            else if (cmbDepartment.SelectedItem.ToString() == "Іменем")
+            {
+                if (checkBox1.Checked)
+                {
+                    SortTableNameDesc();
+                }
+                else
+                {
+                    SortTableNameAsc();
+                }
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbDepartment_SelectedIndexChanged(null, null);
+        }
+
+        
     }
 }

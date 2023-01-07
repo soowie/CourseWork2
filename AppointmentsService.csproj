@@ -169,6 +169,12 @@
     <Compile Include="ResetConfirmation.Designer.cs">
       <DependentUpon>ResetConfirmation.cs</DependentUpon>
     </Compile>
+    <Compile Include="TopWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TopWindow.Designer.cs">
+      <DependentUpon>TopWindow.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminDepartmentChangePanel.resx">
       <DependentUpon>AdminDepartmentChangePanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ResetConfirmation.resx">
       <DependentUpon>ResetConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopWindow.resx">
+      <DependentUpon>TopWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
