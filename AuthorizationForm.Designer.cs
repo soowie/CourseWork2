@@ -141,7 +141,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Name = "AuthorizationForm";
-            this.Text = "AuthorizationForm";
+            this.Text = "Вхід у систему";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AuthorizationForm_FormClosed);
             this.Load += new System.EventHandler(this.AuthorizationForm_Load);
             this.ResumeLayout(false);

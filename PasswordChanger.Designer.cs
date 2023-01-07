@@ -120,7 +120,7 @@
             this.Controls.Add(this.txtPassConfirm);
             this.Controls.Add(this.txtPass);
             this.Name = "PasswordChanger";
-            this.Text = "PasswordChanger";
+            this.Text = "Зміна паролю";
             this.ResumeLayout(false);
             this.PerformLayout();
 

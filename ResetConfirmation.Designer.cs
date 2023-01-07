@@ -72,7 +72,7 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtCode);
             this.Name = "ResetConfirmation";
-            this.Text = "ResetConfirmation";
+            this.Text = "Підтвердження коду";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ResetConfirmation_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

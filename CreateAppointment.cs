@@ -129,9 +129,15 @@ namespace AppointmentsService
         {
             var buttons = groupBox.Controls.OfType<RadioButton>().Select(x => initButton(x)).ToList();
             List<APPOINTMENT> ap = new List<APPOINTMENT>();
+            List<APPOINTMENT> apLocked = new List<APPOINTMENT>();
+            List<string> allap = new List<string>();
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
+                //allap = db.APPOINTMENT.Where(s => DbFunctions.TruncateTime(s.start_time) == dateTimePicker1.Value.Date).Select(x => x.start_time.ToString()).ToList();
+                apLocked = db.APPOINTMENT.Where(s => DbFunctions.TruncateTime(s.start_time) == dateTimePicker1.Value.Date && s.patient_id == PatientID).ToList();
                 ap = db.APPOINTMENT.Where(s => DbFunctions.TruncateTime(s.start_time) == dateTimePicker1.Value.Date && s.doctor_id == model.doctor_id).ToList();
+
+                //ap = ap.Where(x => !allap.Contains(x.start_time.ToString())).ToList();
                 // витягнули всі записи за дату в аргументі
             }
             // отримали всі кнопки групбоксу
@@ -143,6 +149,14 @@ namespace AppointmentsService
                     button.Enabled = button.Checked = false; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     button.BackColor = Color.Red;
                 }
+            }
+
+            foreach (var item in apLocked) // айтем це кожен запис на обрану дату
+            {
+                string gotTime = item.start_time.ToString("HH:mm"); // обрати лише час з запису
+                var button = buttons.Where(s => s.Text == gotTime).FirstOrDefault(); // знайти копку саме з обраним часом
+                button.Enabled = button.Checked = false;
+                button.BackColor = Color.Orange;
             }
 
             foreach (var item in ap) // айтем це кожен запис на обрану дату
@@ -205,6 +219,7 @@ namespace AppointmentsService
             if (selectedButton == null)
             {
                 MessageBox.Show("Оберіть хоча б один час!");
+                return;
             }
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
@@ -283,7 +298,7 @@ namespace AppointmentsService
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
                 //var allappointments = db.APPOINTMENT.Where(b => b.start_time >= DateTime.Now).OrderBy(x => x.start_time).ToList();
-                var allappointments = db.APPOINTMENT.Where(b => b.start_time >= DateTime.Now && b.doctor_id == model.doctor_id).OrderBy(x => x.start_time).ToList();
+                var allappointments = db.APPOINTMENT.Where(b => b.start_time >= DateTime.Now && PatientID == b.patient_id).OrderBy(x => x.start_time).ToList();
                 List<DateTime> possibleTimesForDay = new List<DateTime>();
 
                 possibleTimesForDay.Add(new DateTime(1, 1, 1, 11, 0, 0));

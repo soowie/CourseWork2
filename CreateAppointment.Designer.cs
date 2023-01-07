@@ -59,6 +59,13 @@
             this.btnNextDate = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.btnAutoAppointment = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +96,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(18, 181);
+            this.label3.Location = new System.Drawing.Point(18, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 20);
             this.label3.TabIndex = 1;
@@ -100,7 +107,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(18, 325);
+            this.label4.Location = new System.Drawing.Point(18, 324);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 20);
             this.label4.TabIndex = 1;
@@ -111,7 +118,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(18, 368);
+            this.label5.Location = new System.Drawing.Point(18, 367);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 40);
             this.label5.TabIndex = 1;
@@ -122,7 +129,7 @@
             this.lblRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblRating.AutoSize = true;
             this.lblRating.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblRating.Location = new System.Drawing.Point(18, 436);
+            this.lblRating.Location = new System.Drawing.Point(18, 435);
             this.lblRating.Name = "lblRating";
             this.lblRating.Size = new System.Drawing.Size(78, 20);
             this.lblRating.TabIndex = 1;
@@ -132,7 +139,7 @@
             // 
             this.txtInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtInfo.Location = new System.Drawing.Point(12, 206);
+            this.txtInfo.Location = new System.Drawing.Point(12, 205);
             this.txtInfo.Multiline = true;
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
@@ -145,7 +152,7 @@
             // 
             this.lblExp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblExp.Location = new System.Drawing.Point(109, 315);
+            this.lblExp.Location = new System.Drawing.Point(109, 314);
             this.lblExp.Name = "lblExp";
             this.lblExp.Size = new System.Drawing.Size(74, 41);
             this.lblExp.TabIndex = 1;
@@ -156,7 +163,7 @@
             // 
             this.lblPatientCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblPatientCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblPatientCount.Location = new System.Drawing.Point(111, 370);
+            this.lblPatientCount.Location = new System.Drawing.Point(111, 369);
             this.lblPatientCount.Name = "lblPatientCount";
             this.lblPatientCount.Size = new System.Drawing.Size(74, 42);
             this.lblPatientCount.TabIndex = 1;
@@ -170,7 +177,7 @@
             this.txtRating.BackColor = System.Drawing.Color.Red;
             this.txtRating.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRating.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRating.Location = new System.Drawing.Point(115, 429);
+            this.txtRating.Location = new System.Drawing.Point(115, 428);
             this.txtRating.Multiline = true;
             this.txtRating.Name = "txtRating";
             this.txtRating.Size = new System.Drawing.Size(132, 35);
@@ -260,7 +267,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(157, 21);
+            this.radioButton2.Location = new System.Drawing.Point(157, 25);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(59, 20);
             this.radioButton2.TabIndex = 4;
@@ -271,7 +278,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(157, 73);
+            this.radioButton3.Location = new System.Drawing.Point(157, 77);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(59, 20);
             this.radioButton3.TabIndex = 4;
@@ -282,7 +289,7 @@
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(157, 47);
+            this.radioButton5.Location = new System.Drawing.Point(157, 51);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(59, 20);
             this.radioButton5.TabIndex = 4;
@@ -293,7 +300,7 @@
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(157, 151);
+            this.radioButton6.Location = new System.Drawing.Point(157, 155);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(59, 20);
             this.radioButton6.TabIndex = 4;
@@ -304,7 +311,7 @@
             // radioButton9
             // 
             this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(157, 125);
+            this.radioButton9.Location = new System.Drawing.Point(157, 129);
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.Size = new System.Drawing.Size(59, 20);
             this.radioButton9.TabIndex = 4;
@@ -315,7 +322,7 @@
             // radioButton10
             // 
             this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(157, 99);
+            this.radioButton10.Location = new System.Drawing.Point(157, 103);
             this.radioButton10.Name = "radioButton10";
             this.radioButton10.Size = new System.Drawing.Size(59, 20);
             this.radioButton10.TabIndex = 4;
@@ -326,7 +333,7 @@
             // radioButton11
             // 
             this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(157, 177);
+            this.radioButton11.Location = new System.Drawing.Point(157, 181);
             this.radioButton11.Name = "radioButton11";
             this.radioButton11.Size = new System.Drawing.Size(59, 20);
             this.radioButton11.TabIndex = 4;
@@ -351,7 +358,7 @@
             this.groupBox.Controls.Add(this.radioButton14);
             this.groupBox.Controls.Add(this.radioButton5);
             this.groupBox.Controls.Add(this.radioButton13);
-            this.groupBox.Location = new System.Drawing.Point(275, 206);
+            this.groupBox.Location = new System.Drawing.Point(275, 205);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(254, 207);
             this.groupBox.TabIndex = 5;
@@ -362,7 +369,7 @@
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dateTimePicker1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dateTimePicker1.Location = new System.Drawing.Point(313, 178);
+            this.dateTimePicker1.Location = new System.Drawing.Point(313, 177);
             this.dateTimePicker1.MaxDate = new System.DateTime(2023, 1, 28, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(2023, 1, 3, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -379,7 +386,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Palace Script MT", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(396, 426);
+            this.btnSave.Location = new System.Drawing.Point(396, 425);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(133, 40);
             this.btnSave.TabIndex = 7;
@@ -390,7 +397,7 @@
             // btnPrevDate
             // 
             this.btnPrevDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPrevDate.Location = new System.Drawing.Point(275, 177);
+            this.btnPrevDate.Location = new System.Drawing.Point(275, 176);
             this.btnPrevDate.Name = "btnPrevDate";
             this.btnPrevDate.Size = new System.Drawing.Size(32, 23);
             this.btnPrevDate.TabIndex = 8;
@@ -401,7 +408,7 @@
             // btnNextDate
             // 
             this.btnNextDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnNextDate.Location = new System.Drawing.Point(497, 177);
+            this.btnNextDate.Location = new System.Drawing.Point(497, 176);
             this.btnNextDate.Name = "btnNextDate";
             this.btnNextDate.Size = new System.Drawing.Size(32, 23);
             this.btnNextDate.TabIndex = 8;
@@ -422,7 +429,7 @@
             this.btnAutoAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAutoAppointment.Font = new System.Drawing.Font("Palace Script MT", 9.4F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAutoAppointment.ForeColor = System.Drawing.Color.White;
-            this.btnAutoAppointment.Location = new System.Drawing.Point(275, 426);
+            this.btnAutoAppointment.Location = new System.Drawing.Point(275, 425);
             this.btnAutoAppointment.Name = "btnAutoAppointment";
             this.btnAutoAppointment.Size = new System.Drawing.Size(122, 40);
             this.btnAutoAppointment.TabIndex = 7;
@@ -430,12 +437,88 @@
             this.btnAutoAppointment.UseVisualStyleBackColor = false;
             this.btnAutoAppointment.Click += new System.EventHandler(this.btnAutoAppointment_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.BackColor = System.Drawing.Color.Orange;
+            this.panel1.Location = new System.Drawing.Point(547, 281);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(20, 20);
+            this.panel1.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(574, 284);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 48);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Ви записані до\r\nіншого лікаря\r\nв цей час";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.BackColor = System.Drawing.Color.Red;
+            this.panel2.Location = new System.Drawing.Point(547, 241);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(20, 20);
+            this.panel2.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(574, 244);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 32);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "На цю дату\r\nвже існує запис";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(544, 342);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(155, 48);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Записатись - створити\r\nзапис на обраний час\r\nдо лікаря";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(544, 398);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(163, 48);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Автозапис - створити\r\nзапис найближчий\r\nдо часу в даний момент\r\n";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(544, 210);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 16);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Позначки";
+            // 
             // CreateAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(537, 479);
+            this.ClientSize = new System.Drawing.Size(729, 478);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnNextDate);
             this.Controls.Add(this.btnPrevDate);
             this.Controls.Add(this.btnAutoAppointment);
@@ -454,7 +537,7 @@
             this.Controls.Add(this.lblName);
             this.Name = "CreateAppointment";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Text = "CreateAppointment";
+            this.Text = "Запис до лікаря";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormClosedAction);
             this.Load += new System.EventHandler(this.CreateAppointment_Load);
             this.groupBox.ResumeLayout(false);
@@ -497,5 +580,12 @@
         private System.Windows.Forms.Button btnNextDate;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button btnAutoAppointment;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

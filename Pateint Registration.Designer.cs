@@ -231,7 +231,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Pateint_Registration";
             this.ShowInTaskbar = false;
-            this.Text = "Pateint_Registration";
+            this.Text = "Реєстрація акаунту пацієнта";
             this.ResumeLayout(false);
             this.PerformLayout();
 

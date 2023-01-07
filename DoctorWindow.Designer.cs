@@ -162,7 +162,7 @@
             this.Controls.Add(this.labelPatientInfo);
             this.Name = "DoctorWindow";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Text = "DoctorWindow";
+            this.Text = "Особистий кабінет лікаря";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormClosedAction);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointment)).EndInit();
             this.ResumeLayout(false);

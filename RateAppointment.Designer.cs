@@ -239,7 +239,7 @@
             this.Controls.Add(this.btnRate);
             this.Controls.Add(this.numRating);
             this.Name = "RateAppointment";
-            this.Text = "RateAppointment";
+            this.Text = "Інформація про обраний запис";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormClosedAction);
             ((System.ComponentModel.ISupportInitialize)(this.numRating)).EndInit();
             this.ResumeLayout(false);
