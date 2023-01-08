@@ -34,7 +34,6 @@ namespace AppointmentsService
             PopulateAppointmentDGV();
             dgvDoctors.Refresh();
             cmbDepartment.SelectedIndex = 0;
-            btnPassChange.Hide();
         }
 
         void InitInfo()

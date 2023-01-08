@@ -32,7 +32,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dgvDoctors = new System.Windows.Forms.DataGridView();
             this.btnEditProfile = new System.Windows.Forms.Button();
-            this.btnPassChange = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvAppointment = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -101,20 +100,6 @@
             this.btnEditProfile.Text = "Редагувати дані";
             this.btnEditProfile.UseVisualStyleBackColor = false;
             this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
-            // 
-            // btnPassChange
-            // 
-            this.btnPassChange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnPassChange.BackColor = System.Drawing.Color.Cornsilk;
-            this.btnPassChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPassChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnPassChange.Location = new System.Drawing.Point(12, 53);
-            this.btnPassChange.Name = "btnPassChange";
-            this.btnPassChange.Size = new System.Drawing.Size(314, 35);
-            this.btnPassChange.TabIndex = 6;
-            this.btnPassChange.Text = "Змінити пароль";
-            this.btnPassChange.UseVisualStyleBackColor = false;
-            this.btnPassChange.Click += new System.EventHandler(this.btnPassChange_Click);
             // 
             // label1
             // 
@@ -274,7 +259,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvAppointment);
             this.Controls.Add(this.dgvDoctors);
-            this.Controls.Add(this.btnPassChange);
             this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
@@ -298,7 +282,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvDoctors;
         private System.Windows.Forms.Button btnEditProfile;
-        private System.Windows.Forms.Button btnPassChange;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvAppointment;
         private System.Windows.Forms.Label label2;
