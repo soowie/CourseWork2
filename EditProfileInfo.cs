@@ -52,6 +52,12 @@ namespace AppointmentsService
                     MessageBox.Show("Така пошта вже зайнята!");
                     return;
                 }
+                var doctorSameEmail = db.DOCTOR.Where(x => x.email == patient.email).FirstOrDefault();
+                if (doctorSameEmail != null && !db.ACCOUNT.Where(s => s.account_id == doctorSameEmail.account_id).FirstOrDefault<ACCOUNT>().is_deleted)
+                {
+                    MessageBox.Show("Така пошта вже зайнята!");
+                    return;
+                }
                 patient.phone_number = txtPhone.Text;
                 db.Entry(patient).State = System.Data.Entity.EntityState.Modified;
                 SaveDBChanges(db);

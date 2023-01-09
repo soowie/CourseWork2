@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Application = System.Windows.Forms.Application;
 
 namespace AppointmentsService
@@ -91,6 +83,7 @@ namespace AppointmentsService
             model.department_id = Convert.ToInt32(cmbDepartment.SelectedValue);
 
             modelAcc.login = txtDoctorLogin.Text.Trim();
+
             modelAcc.password = txtDoctorPass.Text.Trim();
             if (model.doctor_id == 0)
             {
@@ -100,6 +93,24 @@ namespace AppointmentsService
             Cursor.Current = Cursors.WaitCursor;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
+                var sameLoginAcc = db.ACCOUNT.Where(s => s.login == modelAcc.login && s.is_deleted == false && s.account_id != model.account_id).FirstOrDefault<ACCOUNT>();
+                if (sameLoginAcc != null)
+                {
+                    MessageBox.Show("Такий логін вже зайнято!");
+                    return;
+                }
+                var doctorSameEmail = db.DOCTOR.Where(x => x.email == model.email && x.doctor_id != model.doctor_id).FirstOrDefault();
+                if (doctorSameEmail != null && !db.ACCOUNT.Where(s => s.account_id == doctorSameEmail.account_id).FirstOrDefault<ACCOUNT>().is_deleted)
+                {
+                    MessageBox.Show("Така пошта вже зайнята!");
+                    return;
+                }
+                var patientSameEmail = db.PATIENT.Where(x => x.email == model.email).FirstOrDefault();
+                if (patientSameEmail != null && !db.ACCOUNT.Where(s => s.account_id == patientSameEmail.account_id).FirstOrDefault<ACCOUNT>().is_deleted)
+                {
+                    MessageBox.Show("Така пошта вже зайнята!");
+                    return;
+                }
                 if (model.doctor_id == 0)
                 {
                     //MessageBox.Show("adding acc");
@@ -147,6 +158,7 @@ namespace AppointmentsService
                     txtDoctorFio.Text = model.name.ToString();
                     сmbSpecialization.Text = model.specialization.ToString();
                     txtDoctorExperience.Text = model.experience.ToString();
+                    
                     txtDoctorEmail.Text = model.email.ToString();
                     txtDoctorInfo.Text = model.information.ToString();
                     txtDoctorPhone.Text = model.phone_number.ToString();
@@ -160,22 +172,15 @@ namespace AppointmentsService
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Ви дійсно хочете видалити цей запис?","Видалення запису про лікаря", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Ви дійсно хочете видалити цей запис?", "Видалення запису про лікаря", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
                 {
-                    //var entry = db.Entry(model);
                     var entryAcc = db.Entry(modelAcc);
-                    //if (entry.State == System.Data.Entity.EntityState.Detached)
-                    //{
-                    //    db.DOCTOR.Attach(model);
-                    //}
                     if (entryAcc.State == System.Data.Entity.EntityState.Detached)
                     {
                         db.ACCOUNT.Attach(modelAcc);
                     }
-                    //db.DOCTOR.Remove(model);
-                    //db.ACCOUNT.Remove(modelAcc);
                     modelAcc.is_deleted = true;
                     SaveDBChanges(db);
                     PopulateDoctorDGV();
@@ -187,15 +192,9 @@ namespace AppointmentsService
 
         private void btnGoDepartment_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<AdminDepartmentChangePanel>().Any())
-            {
-                Application.OpenForms.OfType<AdminDepartmentChangePanel>().First().BringToFront();
-            }
-            else
-            {
-                AdminDepartmentChangePanel f = new AdminDepartmentChangePanel();
-                f.Show();
-            }
+            AdminDepartmentChangePanel f = new AdminDepartmentChangePanel();
+            f.Show();
+            Close();
         }
 
         private void AdminDoctorChangePanel_FormClosed(object sender, FormClosedEventArgs e)

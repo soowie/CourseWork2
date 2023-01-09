@@ -22,6 +22,11 @@ namespace AppointmentsService
                 docID = db.APPOINTMENT.Where(x => x.appointment_id == id).FirstOrDefault().doctor_id;
                 apToPrint = db.APPOINTMENT.Where(x => x.appointment_id == id).FirstOrDefault();
             }
+            if (apToPrint.end_time > DateTime.Now)
+            {
+                btnRate.Enabled = false;
+                numRating.Enabled = false;
+            }
             GetFields();
 
         }

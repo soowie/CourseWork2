@@ -562,13 +562,12 @@ namespace AppointmentsService
                     SortTableNameAsc();
                 }
             }
+            searchBox_TextChanged(null, null);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             cmbDepartment_SelectedIndexChanged(null, null);
         }
-
-        
     }
 }

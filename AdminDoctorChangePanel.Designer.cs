@@ -79,9 +79,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(32, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 20);
+            this.label1.Size = new System.Drawing.Size(38, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "ФІО";
+            this.label1.Text = "ПІБ";
             // 
             // dgvCustomer
             // 
@@ -453,7 +453,7 @@
             // DoctorName
             // 
             this.DoctorName.DataPropertyName = "name";
-            this.DoctorName.HeaderText = "П. І. Б.";
+            this.DoctorName.HeaderText = "ПІБ";
             this.DoctorName.MinimumWidth = 6;
             this.DoctorName.Name = "DoctorName";
             this.DoctorName.ReadOnly = true;

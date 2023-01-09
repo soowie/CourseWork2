@@ -118,9 +118,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(23, 99);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(108, 20);
+            this.label6.Size = new System.Drawing.Size(96, 20);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Ф.І.О лікаря";
+            this.label6.Text = "ПІБ лікаря";
             // 
             // label1
             // 

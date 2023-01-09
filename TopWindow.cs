@@ -19,9 +19,11 @@ namespace AppointmentsService
         {
             InitializeComponent();
         }
+        int ID;
 
         public TopWindow(int type, int id)
         {
+            ID = id;
             InitializeComponent();
             if (type == 1)
             {
@@ -76,7 +78,7 @@ namespace AppointmentsService
                              orderby grp.Count() descending
                              select new
                              {
-                                 doc_id = grp.Key,
+                                 doc_name = grp.Key,
                                  count = grp.Count()
                              }
                              ).Take(5).ToList();
@@ -138,6 +140,22 @@ namespace AppointmentsService
         {
             if (Application.OpenForms.Count == 0)
                 Application.Exit();
+        }
+
+        private void dgvTop_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgvTop.CurrentRow.Index != -1)
+            {
+                int doctor_id;
+                using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
+                {
+                    string docName = dgvTop.CurrentRow.Cells["doc_name"].Value.ToString();
+                    doctor_id = db.DOCTOR.Where(x => x.name == docName).FirstOrDefault().doctor_id;
+                }
+                CreateAppointment cp = new CreateAppointment(doctor_id, ID);
+                cp.ShowDialog();
+                Close();
+            }
         }
     }
 }

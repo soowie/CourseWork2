@@ -66,7 +66,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 35);
+            this.button1.Size = new System.Drawing.Size(334, 35);
             this.button1.TabIndex = 6;
             this.button1.Text = "Вийти";
             this.button1.UseVisualStyleBackColor = false;
@@ -93,9 +93,9 @@
             this.btnEditProfile.BackColor = System.Drawing.Color.Cornsilk;
             this.btnEditProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnEditProfile.Location = new System.Drawing.Point(130, 12);
+            this.btnEditProfile.Location = new System.Drawing.Point(12, 53);
             this.btnEditProfile.Name = "btnEditProfile";
-            this.btnEditProfile.Size = new System.Drawing.Size(196, 35);
+            this.btnEditProfile.Size = new System.Drawing.Size(334, 35);
             this.btnEditProfile.TabIndex = 6;
             this.btnEditProfile.Text = "Редагувати дані";
             this.btnEditProfile.UseVisualStyleBackColor = false;
@@ -219,7 +219,7 @@
             "Кількістю пацієнтів"});
             this.cmbDepartment.Location = new System.Drawing.Point(986, 189);
             this.cmbDepartment.Name = "cmbDepartment";
-            this.cmbDepartment.Size = new System.Drawing.Size(153, 24);
+            this.cmbDepartment.Size = new System.Drawing.Size(185, 24);
             this.cmbDepartment.TabIndex = 12;
             this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
             // 
@@ -236,7 +236,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(1145, 189);
+            this.checkBox1.Location = new System.Drawing.Point(1177, 189);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(131, 20);
             this.checkBox1.TabIndex = 13;

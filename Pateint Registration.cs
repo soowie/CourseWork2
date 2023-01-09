@@ -56,27 +56,31 @@ namespace AppointmentsService
             modelAcc.password = txtPatientPass.Text.Trim();
             modelAcc.creation_date = DateTime.Now;
             modelAcc.type = "patient";
-            
+
             model.name = txtPatientFio.Text.Trim();
             model.date_of_birth = dateTimePicker.Value;
             model.email = txtPatientEmail.Text.Trim();
             model.appointments_overtime = 0;
             model.phone_number = Regex.Replace(txtPatientPhone.Text, @"\s+", "");
-            
+
             Cursor.Current = Cursors.WaitCursor;
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
-                var query = db.ACCOUNT.Where(s => s.login == modelAcc.login).FirstOrDefault<ACCOUNT>();
-                var sameLoginPatient = db.PATIENT.Where(s => s.email == model.email).FirstOrDefault<PATIENT>();
-                if (sameLoginPatient != null)
+                var patientSameEmail = db.PATIENT.Where(x => x.email == model.email).FirstOrDefault();
+                if (patientSameEmail != null && !db.ACCOUNT.Where(s => s.account_id == patientSameEmail.account_id).FirstOrDefault<ACCOUNT>().is_deleted)
                 {
-                    if (!db.ACCOUNT.Where(s => s.account_id == sameLoginPatient.account_id).FirstOrDefault<ACCOUNT>().is_deleted)
-                    {
-                        MessageBox.Show("Така пошта вже зайнята!");
-                        return;
-                    }
+                    MessageBox.Show("Така пошта вже зайнята!");
+                    return;
                 }
-                if (query == null || query.is_deleted)
+                var doctorSameEmail = db.DOCTOR.Where(x => x.email == model.email).FirstOrDefault();
+                if (doctorSameEmail != null && !db.ACCOUNT.Where(s => s.account_id == doctorSameEmail.account_id).FirstOrDefault<ACCOUNT>().is_deleted)
+                {
+                    MessageBox.Show("Така пошта вже зайнята!");
+                    return;
+                }
+
+                var query = db.ACCOUNT.Where(s => s.login == modelAcc.login && s.is_deleted == false).FirstOrDefault<ACCOUNT>();
+                if (query == null)
                 {
                     db.ACCOUNT.Add(modelAcc);
                     SaveDBChanges(db);

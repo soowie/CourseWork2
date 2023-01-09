@@ -22,6 +22,7 @@ namespace AppointmentsService
         DOCTOR model = new DOCTOR();
         APPOINTMENT apToPrint = new APPOINTMENT();
         int PatientID;
+        int id;
         public CreateAppointment()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace AppointmentsService
 
         public CreateAppointment(int id, int patientid)
         {
+            this.id = id;
             PatientID = patientid;
             InitializeComponent();
             dateTimePicker1.MinDate = DateTime.Now;
@@ -252,6 +254,7 @@ namespace AppointmentsService
                 }
             }
             GetAppointmentsForDate();
+            InitModel(id);
         }
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
@@ -297,6 +300,8 @@ namespace AppointmentsService
         {
             using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
             {
+                var selectedButton = groupBox.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked);
+                selectedButton.Checked = false;
                 //var allappointments = db.APPOINTMENT.Where(b => b.start_time >= DateTime.Now).OrderBy(x => x.start_time).ToList();
                 var allappointments = db.APPOINTMENT.Where(b => b.start_time >= DateTime.Now && PatientID == b.patient_id).OrderBy(x => x.start_time).ToList();
                 List<DateTime> possibleTimesForDay = new List<DateTime>();
@@ -358,8 +363,8 @@ namespace AppointmentsService
                     }
                     GetAppointmentsForDate();
                 }
-
             }
+            InitModel(id);
         }
 
         public static DateTime CreateDateFromTime(int year, int month, int day, DateTime time)

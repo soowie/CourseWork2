@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Validation;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AppointmentsService
@@ -55,15 +49,9 @@ namespace AppointmentsService
 
         private void btnGoDoctor_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<AdminDoctorChangePanel>().Any())
-            {
-                Application.OpenForms.OfType<AdminDoctorChangePanel>().First().BringToFront();
-            }
-            else
-            {
-                AdminDoctorChangePanel f = new AdminDoctorChangePanel();
-                f.Show();
-            }
+            AdminDoctorChangePanel f = new AdminDoctorChangePanel();
+            f.Show();
+            Close();
         }
 
         private void btnSave_Click_1(object sender, EventArgs e)
@@ -93,7 +81,7 @@ namespace AppointmentsService
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Ви дійсно хочете видалити цей запис?", "Видалення запису про лікаря", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("Ви дійсно хочете видалити цей відділ", "Видалення запису про відділ", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 using (CourseWorkAppointmentsEntities db = new CourseWorkAppointmentsEntities())
                 {
@@ -101,6 +89,11 @@ namespace AppointmentsService
                     if (entry.State == System.Data.Entity.EntityState.Detached)
                     {
                         db.DEPARTMENT.Attach(model);
+                    }
+                    var docs = db.DOCTOR.Where(x => x.department_id == model.department_id).ToList();
+                    foreach (DOCTOR doc in docs)
+                    {
+                        doc.department_id = 12;
                     }
                     db.DEPARTMENT.Remove(model);
                     SaveDBChanges(db);
